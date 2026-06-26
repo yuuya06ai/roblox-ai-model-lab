@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roblox AI Model Lab｜AI生成3DモデルをRoblox Studioで使う検証ログ</title>
+<meta name="description" content="Meshy・TripoなどのAI生成3DモデルをRoblox Studioで実際に使えるか検証するログサイト。インポート・サイズ調整・向きズレ修正・当たり判定・ギミック化で初心者がつまずく箇所と解決手順を、実機検証で記録しています。">
+<meta name="keywords" content="Roblox Studio,AI生成3Dモデル,Meshy,Tripo,インポート,サイズ調整,当たり判定,ギミック,初心者">
+<link rel="canonical" href="https://roblox-ai-model-lab.pages.dev/">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Roblox AI Model Lab">
+<meta property="og:title" content="Roblox AI Model Lab｜AI生成3DモデルをRoblox Studioで使う検証ログ">
+<meta property="og:description" content="Meshy・TripoのAI生成3DモデルをRoblox Studioで実際に使えるか検証。インポート・サイズ・向き・当たり判定・ギミック化のつまずきと解決手順を実機検証で記録。">
+<meta property="og:url" content="https://roblox-ai-model-lab.pages.dev/">
+<meta property="og:image" content="https://roblox-ai-model-lab.pages.dev/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Roblox AI Model Lab",
+  "url": "https://roblox-ai-model-lab.pages.dev/",
+  "description": "Meshy・TripoのAI生成3DモデルをRoblox Studioで実際に使えるか検証する個人運営のログサイト。",
+  "inLanguage": "ja",
+  "publisher": {
+    "@type": "Person",
+    "name": "Roblox AI Model Lab 運営"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ===================== Header ===================== -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Roblox AI Model Lab ホーム">
+      <span class="logo-mark">AI</span>
+      <span>
+        <span class="brand-name">Roblox AI Model Lab</span>
+        <span class="brand-sub">verification log</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#about">このサイトについて</a>
+      <a href="#categories">検証カテゴリ</a>
+      <a href="#logs">検証ログ</a>
+      <a href="#roadmap">今後の予定</a>
+      <a href="#policy">運営ポリシー</a>
+      <a class="btn btn-primary" href="https://note.com/yu_papa_ai" target="_blank" rel="noopener">noteで読む</a>
+    </nav>
+
+    <a class="btn btn-primary header-cta" href="https://note.com/yu_papa_ai" target="_blank" rel="noopener">noteで読む</a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="メニューを開閉" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===================== Hero ===================== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">AI × Roblox Studio 検証ログ</span>
+      <h1>AI生成3Dモデルは、<br>Roblox Studioで<span class="hl">本当に使える</span>のか。</h1>
+      <p class="hero-lead">
+        Meshy・Tripo で作った3DモデルをRoblox Studioに取り込み、
+        サイズ・向き・当たり判定・ギミック化で「実際につまずいた箇所」と「直し方」を
+        ひとつずつ記録していく、個人運営の検証ログサイトです。
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#logs">最新の検証ログを見る</a>
+        <a class="btn btn-ghost" href="#about">このサイトについて</a>
+      </div>
+      <div class="hero-meta">
+        <span class="chip">個人運営</span>
+        <span class="chip">実機で検証</span>
+        <span class="chip">初心者向け</span>
+        <span class="chip">失敗もそのまま記録</span>
+      </div>
+    </div>
+
+    <div class="hero-visual ph">
+      <span class="badge">Roblox Studio</span>
+      <span class="ph-tag">[ スクリーンショット差し替え予定 ]</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== About ===================== -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">About this site</span>
+      <h2>「AIツールの紹介」ではなく、<br>Roblox Studioで“詰まった→直した”を記録します。</h2>
+      <p>
+        AIで3Dモデルを作るところまでは、いまは誰でもできます。
+        本当に大変なのはそのあと——Roblox Studioに入れてから動かすまで。
+        このサイトは、その手前で止まってしまう初心者のための検証メモです。
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <span class="num">01 / 対象</span>
+        <h3>Roblox Studioを始めたばかりの大人</h3>
+        <p>専門用語をできるだけ避け、どこをクリックして何が起きたかまで含めて書きます。プログラミング未経験でも追える粒度を目指します。</p>
+      </div>
+      <div class="about-card">
+        <span class="num">02 / 主役</span>
+        <h3>つまずきポイントと解決手順</h3>
+        <p>「巨大になる」「90度倒れる」「すり抜ける」「動かない」——初心者が必ず一度はぶつかる壁を、再現条件つきで分解します。</p>
+      </div>
+      <div class="about-card">
+        <span class="num">03 / 方法</span>
+        <h3>実機検証 + 結果の正直な記録</h3>
+        <p>うまくいった手順だけでなく、ダメだった方法も残します。検証日・バージョン・使ったツールを明記し、追試できる形にします。</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="ic">i</span>
+      <p>
+        扱うのは <strong>Meshy・Tripo などで生成した3Dモデルを Roblox Studio で使うこと</strong> に絞っています。
+        各AIツールの使い方そのものより、<strong>「Studioに入れてからの挙動」</strong>を中心に検証します。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Categories ===================== -->
+<section class="section soft" id="categories">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Verification categories</span>
+      <h2>検証カテゴリ一覧</h2>
+      <p>AI生成3DモデルをRoblox Studioで使うまでの流れを、つまずきやすい5つの工程に分けて検証しています。</p>
+    </div>
+
+    <div class="cat-grid">
+      <a class="cat-card" href="#logs">
+        <span class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m8 11 4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+        </span>
+        <span class="cat-step">STEP 01</span>
+        <h3>AI生成3Dモデルのインポート</h3>
+        <p>.obj / .fbx / .glb をStudioに取り込む手順。MeshPartへの変換、テクスチャやマテリアルが反映されない問題の確認。</p>
+        <span class="cat-tags"><span class="t">Import</span><span class="t">MeshPart</span><span class="t">.fbx</span></span>
+      </a>
+
+      <a class="cat-card" href="#logs">
+        <span class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V5a2 2 0 0 1 2-2h3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg>
+        </span>
+        <span class="cat-step">STEP 02</span>
+        <h3>サイズ調整</h3>
+        <p>取り込むと巨大／極小になる問題。実寸スケールの合わせ方、キャラと並べたときの基準サイズの決め方。</p>
+        <span class="cat-tags"><span class="t">Scale</span><span class="t">Stud</span><span class="t">実寸</span></span>
+      </a>
+
+      <a class="cat-card" href="#logs">
+        <span class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m4.9 4.9 2.8 2.8"/><path d="M2 12h4"/><circle cx="12" cy="13" r="6"/><path d="m15 10-3 3"/></svg>
+        </span>
+        <span class="cat-step">STEP 03</span>
+        <h3>向きズレ修正</h3>
+        <p>取り込むと90度倒れる・軸が違う問題。Orientationの直し方、書き出し側（Meshy / Tripo）での向きの揃え方。</p>
+        <span class="cat-tags"><span class="t">Orientation</span><span class="t">軸</span><span class="t">Pivot</span></span>
+      </a>
+
+      <a class="cat-card" href="#logs">
+        <span class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 3.5 7.5 9 9 5.5-1.5 9-4 9-9V7Z"/><path d="m9 12 2 2 4-4"/></svg>
+        </span>
+        <span class="cat-step">STEP 04</span>
+        <h3>当たり判定（コリジョン）</h3>
+        <p>すり抜ける・引っかかる問題。CanCollide と CollisionFidelity の違い、複雑な形状での判定の最適化。</p>
+        <span class="cat-tags"><span class="t">CanCollide</span><span class="t">Collision</span></span>
+      </a>
+
+      <a class="cat-card" href="#logs">
+        <span class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+        </span>
+        <span class="cat-step">STEP 05</span>
+        <h3>ギミック化</h3>
+        <p>置いただけのモデルを動かす。ProximityPrompt・Tween・簡単なスクリプトで、ドア／スイッチ／拾えるアイテムにする。</p>
+        <span class="cat-tags"><span class="t">Script</span><span class="t">Tween</span><span class="t">Prompt</span></span>
+      </a>
+
+      <div class="cat-card" style="border-style:dashed;background:transparent;justify-content:center;align-items:flex-start;">
+        <span class="cat-step">COMING SOON</span>
+        <h3 style="color:var(--ink-2)">カテゴリは順次追加</h3>
+        <p>Meshy / Tripo / 実機検証ログ / 初心者ガイド など、検証が増えるごとにカテゴリを広げていきます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Logs ===================== -->
+<section class="section" id="logs">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Latest logs</span>
+      <h2>最新の検証ログ</h2>
+      <p>検証日・使用ツール・結果（解決 / 検証中）を明記しています。※下記はサンプル表示です。</p>
+    </div>
+
+    <div class="log-list">
+
+      <article class="log-card">
+        <div class="log-thumb ph"><span class="ph-tag">[ Studio スクショ ]</span></div>
+        <div class="log-body">
+          <div class="log-meta">
+            <span class="tag tag-cat">インポート</span>
+            <span class="status solved">解決済み</span>
+            <span>2026.06.20</span>
+          </div>
+          <h3><a href="#logs">Meshyの.fbxをRoblox Studioに入れたらテクスチャが消えた件と対処</a></h3>
+          <p class="excerpt">テクスチャが反映されないのは「埋め込み忘れ」と「インポート設定」が原因でした。再現条件と、確実に色を出す書き出し手順をまとめます。</p>
+          <div class="log-foot"><span>Meshy / Studio 0.6xx</span><span class="more">続きを読む →</span></div>
+        </div>
+      </article>
+
+      <article class="log-card">
+        <div class="log-thumb ph"><span class="ph-tag">[ Studio スクショ ]</span></div>
+        <div class="log-body">
+          <div class="log-meta">
+            <span class="tag tag-cat">サイズ調整</span>
+            <span class="status solved">解決済み</span>
+            <span>2026.06.16</span>
+          </div>
+          <h3><a href="#logs">取り込むと「巨大化」する3Dモデルを、キャラ基準で一発スケールする</a></h3>
+          <p class="excerpt">Tripoから出したモデルがプレイヤーの何十倍にもなる問題。基準サイズの決め方と、毎回ぶれないリサイズの考え方を解説します。</p>
+          <div class="log-foot"><span>Tripo / Studio 0.6xx</span><span class="more">続きを読む →</span></div>
+        </div>
+      </article>
+
+      <article class="log-card">
+        <div class="log-thumb ph"><span class="ph-tag">[ Studio スクショ ]</span></div>
+        <div class="log-body">
+          <div class="log-meta">
+            <span class="tag tag-cat">向きズレ修正</span>
+            <span class="status testing">検証中</span>
+            <span>2026.06.12</span>
+          </div>
+          <h3><a href="#logs">「90度倒れて入る」モデルの向きを、書き出し側と取り込み側どちらで直すべきか</a></h3>
+          <p class="excerpt">Orientationで毎回直すか、エクスポート時の軸設定で根本解決するか。複数パターンを比較して、初心者に向く方法を検証しています。</p>
+          <div class="log-foot"><span>Meshy / Tripo</span><span class="more">続きを読む →</span></div>
+        </div>
+      </article>
+
+      <article class="log-card">
+        <div class="log-thumb ph"><span class="ph-tag">[ Studio スクショ ]</span></div>
+        <div class="log-body">
+          <div class="log-meta">
+            <span class="tag tag-cat">当たり判定</span>
+            <span class="status retest">要再検証</span>
+            <span>2026.06.08</span>
+          </div>
+          <h3><a href="#logs">複雑な形状ですり抜ける／引っかかる。CollisionFidelityの選び方</a></h3>
+          <p class="excerpt">Default・Hull・PreciseConvexDecompositionでどう変わるか実測。負荷と精度のバランスを取る指針を探りますが、再検証が必要な箇所あり。</p>
+          <div class="log-foot"><span>Studio 0.6xx</span><span class="more">続きを読む →</span></div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="section-foot">
+      <a class="btn btn-ghost" href="https://note.com/yu_papa_ai" target="_blank" rel="noopener">すべての検証ログをnoteで読む →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== note CTA ===================== -->
+<section class="section">
+  <div class="wrap">
+    <div class="note-cta">
+      <div>
+        <span class="eyebrow">Read more on note</span>
+        <h2>長文の検証メモ・失敗の記録はnoteで。</h2>
+        <p>スクリーンショット付きの手順、試行錯誤の過程、ボツになった方法まで——トップに載せきれない詳細は note に書いています。更新通知もnoteで受け取れます。</p>
+      </div>
+      <a class="btn btn-note" href="https://note.com/yu_papa_ai" target="_blank" rel="noopener">noteを見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Roadmap ===================== -->
+<section class="section soft" id="roadmap">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Roadmap</span>
+      <h2>今後の検証予定</h2>
+      <p>これから検証して記事にしていく予定のテーマです。リクエストはnote経由でも受け付けています。</p>
+    </div>
+
+    <div class="roadmap">
+      <div class="road-item">
+        <span class="rk">予定 / インポート</span>
+        <div><h4>.glb と .fbx、Studioで扱いやすいのはどっち？</h4><p>同一モデルを両形式で書き出し、テクスチャ・サイズ・破損のしやすさを比較します。</p></div>
+      </div>
+      <div class="road-item">
+        <span class="rk">予定 / ギミック</span>
+        <div><h4>AIモデルを「開く宝箱」にする最小スクリプト</h4><p>ProximityPromptとTweenだけで、コピペで動く宝箱ギミックを作ります。</p></div>
+      </div>
+      <div class="road-item">
+        <span class="rk">予定 / 当たり判定</span>
+        <div><h4>軽い当たり判定の作り方（見た目はそのまま）</h4><p>表示用メッシュと判定用の単純な形を分け、処理を軽くする方法を検証します。</p></div>
+      </div>
+      <div class="road-item">
+        <span class="rk">予定 / 初心者ガイド</span>
+        <div><h4>はじめてのAIモデル配置ガイド（通し手順）</h4><p>生成→書き出し→インポート→設置までを、最短ルートで1本にまとめます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Policy ===================== -->
+<section class="section" id="policy">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Editorial policy</span>
+      <h2>運営ポリシー</h2>
+      <p>「検証ログ」を名乗る以上、結果の信頼性を大切にしています。次の方針で運営しています。</p>
+    </div>
+
+    <div class="policy-grid">
+      <div class="policy-item">
+        <span class="pn">01</span>
+        <div><h4>実機で検証してから書く</h4><p>推測ではなく、実際にRoblox Studioで操作した結果だけを記録します。検証日と使用バージョンを明記します。</p></div>
+      </div>
+      <div class="policy-item">
+        <span class="pn">02</span>
+        <div><h4>失敗・ボツも残す</h4><p>うまくいった手順だけでなく、ダメだった方法も「なぜダメか」とあわせて残します。</p></div>
+      </div>
+      <div class="policy-item">
+        <span class="pn">03</span>
+        <div><h4>初心者目線を最優先</h4><p>専門用語には補足を添え、どこを操作したかが分かる粒度で書きます。前提知識を求めすぎません。</p></div>
+      </div>
+      <div class="policy-item">
+        <span class="pn">04</span>
+        <div><h4>商標・権利に配慮する</h4><p>本サイトはRoblox Corporationとは無関係の個人運営です。各ツールの利用規約に反する使い方は扱いません。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== Footer ===================== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="#top">
+          <span class="logo-mark">AI</span>
+          <span class="brand-name">Roblox AI Model Lab</span>
+        </a>
+        <p>Meshy・TripoのAI生成3DモデルをRoblox Studioで使えるか検証する、個人運営のログサイト。初心者がつまずく箇所を、実機検証で記録しています。</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Sections</h5>
+        <ul>
+          <li><a href="#about">このサイトについて</a></li>
+          <li><a href="#categories">検証カテゴリ</a></li>
+          <li><a href="#logs">検証ログ</a></li>
+          <li><a href="#roadmap">今後の予定</a></li>
+          <li><a href="#policy">運営ポリシー</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Topics</h5>
+        <div class="footer-tags">
+          <a class="t" href="#logs">Meshy</a>
+          <a class="t" href="#logs">Tripo</a>
+          <a class="t" href="#logs">Roblox Studio</a>
+          <a class="t" href="#logs">AI生成3Dモデル</a>
+          <a class="t" href="#logs">実機検証ログ</a>
+          <a class="t" href="#logs">初心者ガイド</a>
+        </div>
+        <h5 style="margin-top:22px">Links</h5>
+        <ul>
+          <li><a href="https://note.com/yu_papa_ai" target="_blank" rel="noopener">note ↗</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="disclaimer">
+        <strong>免責・商標について：</strong>
+        本サイト「Roblox AI Model Lab」は個人が運営する非公式の検証サイトであり、
+        Roblox Corporation とは一切関係がありません。
+        「Roblox」は Roblox Corporation の商標です。
+        Meshy・Tripo を含む各社サービス名・製品名は、各社の商標または登録商標です。
+        掲載内容は検証時点のもので、正確性・最新性を保証するものではありません。
+      </p>
+      <p>© 2026 Roblox AI Model Lab</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // モバイルメニュー開閉（バニラJSのみ）
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var nav = document.getElementById('nav');
+    if (!toggle || !nav) return;
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
