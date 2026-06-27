@@ -211,77 +211,104 @@
 </section>
 
 <!-- ===================== Logs ===================== -->
+
 <section class="section" id="logs">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Latest logs</span>
       <h2>最新の検証ログ</h2>
-      <p>検証日・使用ツール・結果（解決 / 検証中）を明記しています。※下記はサンプル表示です。</p>
+      <p>
+        Roblox StudioでAI生成3Dモデルを実際に扱った検証テーマを整理しています。
+        自サイト内の記事ページは順次追加予定です。詳細な検証メモは先行してnoteにまとめています。
+      </p>
     </div>
 
-    <div class="log-list">
+```
+<div class="log-list">
 
-      <article class="log-card">
-        <div class="log-thumb ph"><span class="ph-tag">[ Studio スクショ ]</span></div>
-        <div class="log-body">
-          <div class="log-meta">
-            <span class="tag tag-cat">インポート</span>
-            <span class="status solved">解決済み</span>
-            <span>2026.06.20</span>
-          </div>
-          <h3><a href="#logs">Meshyの.fbxをRoblox Studioに入れたらテクスチャが消えた件と対処</a></h3>
-          <p class="excerpt">テクスチャが反映されないのは「埋め込み忘れ」と「インポート設定」が原因でした。再現条件と、確実に色を出す書き出し手順をまとめます。</p>
-          <div class="log-foot"><span>Meshy / Studio 0.6xx</span><span class="more">続きを読む →</span></div>
-        </div>
-      </article>
-
-      <article class="log-card">
-        <div class="log-thumb ph"><span class="ph-tag">[ Studio スクショ ]</span></div>
-        <div class="log-body">
-          <div class="log-meta">
-            <span class="tag tag-cat">サイズ調整</span>
-            <span class="status solved">解決済み</span>
-            <span>2026.06.16</span>
-          </div>
-          <h3><a href="#logs">取り込むと「巨大化」する3Dモデルを、キャラ基準で一発スケールする</a></h3>
-          <p class="excerpt">Tripoから出したモデルがプレイヤーの何十倍にもなる問題。基準サイズの決め方と、毎回ぶれないリサイズの考え方を解説します。</p>
-          <div class="log-foot"><span>Tripo / Studio 0.6xx</span><span class="more">続きを読む →</span></div>
-        </div>
-      </article>
-
-      <article class="log-card">
-        <div class="log-thumb ph"><span class="ph-tag">[ Studio スクショ ]</span></div>
-        <div class="log-body">
-          <div class="log-meta">
-            <span class="tag tag-cat">向きズレ修正</span>
-            <span class="status testing">検証中</span>
-            <span>2026.06.12</span>
-          </div>
-          <h3><a href="#logs">「90度倒れて入る」モデルの向きを、書き出し側と取り込み側どちらで直すべきか</a></h3>
-          <p class="excerpt">Orientationで毎回直すか、エクスポート時の軸設定で根本解決するか。複数パターンを比較して、初心者に向く方法を検証しています。</p>
-          <div class="log-foot"><span>Meshy / Tripo</span><span class="more">続きを読む →</span></div>
-        </div>
-      </article>
-
-      <article class="log-card">
-        <div class="log-thumb ph"><span class="ph-tag">[ Studio スクショ ]</span></div>
-        <div class="log-body">
-          <div class="log-meta">
-            <span class="tag tag-cat">当たり判定</span>
-            <span class="status retest">要再検証</span>
-            <span>2026.06.08</span>
-          </div>
-          <h3><a href="#logs">複雑な形状ですり抜ける／引っかかる。CollisionFidelityの選び方</a></h3>
-          <p class="excerpt">Default・Hull・PreciseConvexDecompositionでどう変わるか実測。負荷と精度のバランスを取る指針を探りますが、再検証が必要な箇所あり。</p>
-          <div class="log-foot"><span>Studio 0.6xx</span><span class="more">続きを読む →</span></div>
-        </div>
-      </article>
-
+  <article class="log-card">
+    <div class="log-thumb ph"><span class="ph-tag">[ Studio スクリーンショット追加予定 ]</span></div>
+    <div class="log-body">
+      <div class="log-meta">
+        <span class="tag tag-cat">サイズ調整</span>
+        <span class="status solved">検証済み</span>
+      </div>
+      <h3>AI生成した宝箱モデルのサイズをRoblox Studio内で調整する</h3>
+      <p class="excerpt">
+        Meshyなどで作った3DモデルをStudioに取り込むと、想定より大きすぎる・小さすぎることがあります。
+        プレイヤーキャラ基準でサイズを合わせる考え方を、自サイト記事として整理予定です。
+      </p>
+      <div class="log-foot">
+        <span>Meshy / Roblox Studio</span>
+        <span class="more">記事準備中</span>
+      </div>
     </div>
+  </article>
 
-    <div class="section-foot">
-      <a class="btn btn-ghost" href="https://note.com/yu_papa_ai" target="_blank" rel="noopener">すべての検証ログをnoteで読む →</a>
+  <article class="log-card">
+    <div class="log-thumb ph"><span class="ph-tag">[ Studio スクリーンショット追加予定 ]</span></div>
+    <div class="log-body">
+      <div class="log-meta">
+        <span class="tag tag-cat">ギミック化</span>
+        <span class="status solved">検証済み</span>
+      </div>
+      <h3>AI宝箱をProximityPromptで開けるギミックにする</h3>
+      <p class="excerpt">
+        置いただけのAI生成モデルを、Roblox Studio上で「近づいて操作できる宝箱」に変える検証です。
+        Prompt・InteractPart・スクリプトの基本構成を記事化予定です。
+      </p>
+      <div class="log-foot">
+        <span>ProximityPrompt / Script</span>
+        <span class="more">記事準備中</span>
+      </div>
     </div>
+  </article>
+
+  <article class="log-card">
+    <div class="log-thumb ph"><span class="ph-tag">[ Studio スクリーンショット追加予定 ]</span></div>
+    <div class="log-body">
+      <div class="log-meta">
+        <span class="tag tag-cat">ミニゲーム化</span>
+        <span class="status solved">検証済み</span>
+      </div>
+      <h3>AI宝箱を使ってコイン回収ミニゲームを作る</h3>
+      <p class="excerpt">
+        AI生成した宝箱をゴールにして、コイン回収・リスポーン・クリア表示を組み合わせた検証です。
+        Roblox Studio初心者向けに、段階ごとの追加手順として整理予定です。
+      </p>
+      <div class="log-foot">
+        <span>Coin / Respawn / Clear</span>
+        <span class="more">記事準備中</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="log-card">
+    <div class="log-thumb ph"><span class="ph-tag">[ Studio スクリーンショット追加予定 ]</span></div>
+    <div class="log-body">
+      <div class="log-meta">
+        <span class="tag tag-cat">ゲーム拡張</span>
+        <span class="status testing">検証中</span>
+      </div>
+      <h3>町探索マップにAI宝箱と鍵モデルを配置する</h3>
+      <p class="excerpt">
+        足場ミニゲームから町探索型のマップへ広げ、AI生成モデルをゲーム内アイテムとして使えるか検証中です。
+        鍵・宝箱・家・街灯などの配置と使い方を今後まとめます。
+      </p>
+      <div class="log-foot">
+        <span>Town map / Key / Chest</span>
+        <span class="more">検証中</span>
+      </div>
+    </div>
+  </article>
+
+</div>
+
+<div class="section-foot">
+  <a class="btn btn-ghost" href="https://note.com/yu_papa_ai" target="_blank" rel="noopener">先行版の検証ログをnoteで読む →</a>
+</div>
+```
+
   </div>
 </section>
 
