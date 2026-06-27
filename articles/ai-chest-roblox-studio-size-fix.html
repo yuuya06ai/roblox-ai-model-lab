@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>AI生成した宝箱モデルをRoblox Studioで使うには？サイズ調整で詰まった検証ログ</title>
+  <meta name="description" content="Meshyで作ったAI生成宝箱モデルをRoblox Studioに取り込み、サイズ調整・当たり判定・ギミック化で詰まった点と解決方法を実機検証ベースでまとめます。">
+  <meta name="keywords" content="Roblox Studio,AI生成3Dモデル,Meshy,宝箱,サイズ調整,インポート,当たり判定,ProximityPrompt,初心者">
+  <link rel="canonical" href="https://roblox-ai-model-lab.pages.dev/articles/ai-chest-roblox-studio-size-fix.html">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#2563eb">
+
+  <!-- OGP -->
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="Roblox AI Model Lab">
+  <meta property="og:title" content="AI生成した宝箱モデルをRoblox Studioで使うには？サイズ調整で詰まった検証ログ">
+  <meta property="og:description" content="Meshyで作ったAI生成宝箱モデルをRoblox Studioに取り込み、サイズ調整・当たり判定・ギミック化で詰まった点と解決方法を実機検証ベースでまとめます。">
+  <meta property="og:url" content="https://roblox-ai-model-lab.pages.dev/articles/ai-chest-roblox-studio-size-fix.html">
+  <meta property="og:image" content="https://roblox-ai-model-lab.pages.dev/ogp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI生成した宝箱モデルをRoblox Studioで使うには？サイズ調整で詰まった検証ログ">
+  <meta name="twitter:description" content="Meshyで作ったAI生成宝箱モデルをRoblox Studioに取り込み、サイズ調整・当たり判定・ギミック化で詰まった点と解決方法を実機検証ベースでまとめます。">
+  <meta name="twitter:image" content="https://roblox-ai-model-lab.pages.dev/ogp.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+
+  <style>
+    body {
+      background: #f8fbff;
+      color: #0f172a;
+      font-family: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.8;
+    }
+
+    .article-wrapper {
+      width: min(100% - 32px, 960px);
+      margin: 0 auto;
+      padding: 40px 0 72px;
+    }
+
+    .article-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 32px;
+      font-size: 14px;
+    }
+
+    .article-nav a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .article-hero {
+      background: #ffffff;
+      border: 1px solid #bfdbfe;
+      border-radius: 28px;
+      padding: 36px;
+      box-shadow: 0 18px 45px rgba(37, 99, 235, 0.08);
+      margin-bottom: 32px;
+    }
+
+    .article-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .article-hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.35;
+      margin: 0 0 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .article-lead {
+      color: #475569;
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .article-meta span {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 999px;
+      padding: 5px 12px;
+    }
+
+    .article-content {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      padding: 34px;
+    }
+
+    .article-content h2 {
+      font-size: 26px;
+      line-height: 1.45;
+      margin: 44px 0 16px;
+      padding-left: 14px;
+      border-left: 5px solid #2563eb;
+    }
+
+    .article-content h2:first-child {
+      margin-top: 0;
+    }
+
+    .article-content h3 {
+      font-size: 20px;
+      margin: 28px 0 10px;
+    }
+
+    .article-content p {
+      margin: 0 0 18px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 1.4em;
+      margin: 0 0 22px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .summary-box,
+    .point-box,
+    .warning-box {
+      border-radius: 18px;
+      padding: 20px;
+      margin: 22px 0;
+    }
+
+    .summary-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+    }
+
+    .point-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+
+    .warning-box {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 28px;
+      font-size: 15px;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .data-table th,
+    .data-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .data-table th {
+      background: #eff6ff;
+      color: #1e3a8a;
+      font-weight: 700;
+      width: 34%;
+    }
+
+    code {
+      font-family: "JetBrains Mono", monospace;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-size: 0.92em;
+    }
+
+    .screenshot-placeholder {
+      border: 2px dashed #bfdbfe;
+      border-radius: 20px;
+      background: #f8fbff;
+      color: #64748b;
+      padding: 28px;
+      margin: 18px 0 28px;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .article-links {
+      display: grid;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .article-links a {
+      display: block;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 14px 16px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .article-footer {
+      margin-top: 32px;
+      color: #64748b;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .article-wrapper {
+        width: min(100% - 20px, 960px);
+        padding-top: 24px;
+      }
+
+      .article-hero,
+      .article-content {
+        padding: 24px 18px;
+        border-radius: 20px;
+      }
+
+      .article-nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .data-table {
+        font-size: 14px;
+      }
+
+      .data-table th,
+      .data-table td {
+        display: block;
+        width: 100%;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "AI生成した宝箱モデルをRoblox Studioで使うには？サイズ調整で詰まった検証ログ",
+    "description": "Meshyで作ったAI生成宝箱モデルをRoblox Studioに取り込み、サイズ調整・当たり判定・ギミック化で詰まった点と解決方法を実機検証ベースでまとめます。",
+    "image": "https://roblox-ai-model-lab.pages.dev/ogp.png",
+    "datePublished": "2026-06-27",
+    "dateModified": "2026-06-27",
+    "author": {
+      "@type": "Organization",
+      "name": "Roblox AI Model Lab"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Roblox AI Model Lab",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://roblox-ai-model-lab.pages.dev/favicon-32x32.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://roblox-ai-model-lab.pages.dev/articles/ai-chest-roblox-studio-size-fix.html"
+    }
+  }
+  </script>
+
+</head>
+
+<body>
+  <div class="article-wrapper">
+    <nav class="article-nav" aria-label="パンくず">
+      <a href="/">← Roblox AI Model Lab トップへ戻る</a>
+      <span>Verification Log / Roblox Studio × AI 3D Model</span>
+    </nav>
+
+```
+<header class="article-hero">
+  <div class="article-label">検証ログ｜AI生成3Dモデル × Roblox Studio</div>
+  <h1>AI生成した宝箱モデルをRoblox Studioで使うには？サイズ調整で詰まった検証ログ</h1>
+  <p class="article-lead">
+    Meshyで作ったAI生成宝箱モデルをRoblox Studioに取り込み、実際のゲーム内で使えるように調整した検証ログです。
+    この記事では、インポート直後に詰まったサイズ調整・配置・当たり判定・ギミック化のポイントを、初心者向けに整理します。
+  </p>
+  <div class="article-meta">
+    <span>公開日：2026年6月27日</span>
+    <span>検証日：2026年6月</span>
+    <span>対象：Roblox Studio初心者</span>
+  </div>
+</header>
+
+<main class="article-content">
+  <h2>結論</h2>
+  <div class="summary-box">
+    <p>
+      AI生成した3Dモデルは、Roblox Studioに取り込むだけではゲーム素材として扱いにくい場合があります。
+      特に宝箱のように「近づいて開ける」「報酬を出す」「クリア判定に使う」モデルでは、
+      見た目のモデルとは別に、操作用のPartやProximityPromptを用意した方が安定しました。
+    </p>
+  </div>
+
+  <p>
+    今回の検証では、AI生成した宝箱モデルをRoblox Studioに入れたあと、
+    そのままではサイズ感が合わず、ゲーム内ギミックとしても扱いにくいことがわかりました。
+  </p>
+
+  <p>
+    ただし、Scaleツールでサイズを調整し、操作判定用の<code>InteractPart</code>を別に作ることで、
+    初心者でも「近づいて操作できる宝箱」として使える形にできました。
+  </p>
+
+  <h2>今回の検証内容</h2>
+
+  <h3>使用したAI生成3Dモデル</h3>
+  <p>
+    今回使ったのは、AI生成ツールで作成した宝箱モデルです。
+    Roblox Studioへ取り込み、町探索やミニゲーム内で使える宝箱として配置できるかを検証しました。
+  </p>
+
+  <table class="data-table">
+    <tr>
+      <th>検証対象</th>
+      <td>AI生成した宝箱モデル</td>
+    </tr>
+    <tr>
+      <th>使用先</th>
+      <td>Roblox Studio内のミニゲーム・探索マップ</td>
+    </tr>
+    <tr>
+      <th>確認したこと</th>
+      <td>サイズ調整、配置、当たり判定、操作判定、ギミック化</td>
+    </tr>
+  </table>
+
+  <h3>Roblox Studioで試したこと</h3>
+  <p>
+    Roblox Studio上では、宝箱モデルを単に置くだけではなく、
+    プレイヤーが近づいて操作できるようにすることを目標にしました。
+  </p>
+
+  <ul>
+    <li>AI生成宝箱モデルをRoblox Studioに取り込む</li>
+    <li>ゲーム内で見やすいサイズに調整する</li>
+    <li>宝箱の近くで操作できるようにする</li>
+    <li>ProximityPromptを使ってギミック化する</li>
+  </ul>
+
+  <h2>実際に詰まったポイント</h2>
+
+  <h3>1. インポート直後のサイズが合わない</h3>
+  <p>
+    AI生成3Dモデルは、Roblox Studioへ取り込んだ直後のサイズが、そのままゲームに合うとは限りません。
+    今回の宝箱も、最初はゲーム内で使うには小さすぎる状態でした。
+  </p>
+
+  <table class="data-table">
+    <tr>
+      <th>インポート直後のSize</th>
+      <td><code>2, 1.381, 1.586</code></td>
+    </tr>
+    <tr>
+      <th>調整後のSize</th>
+      <td><code>5.71, 3.941, 4.527</code></td>
+    </tr>
+  </table>
+
+  <p>
+    数値だけ見ると少しの差に見えますが、Roblox Studio内ではプレイヤーの身長やステージの広さとのバランスが重要です。
+    そのため、実際にPlayして見え方を確認しながら調整する必要がありました。
+  </p>
+
+  <h3>2. 見た目のモデルと操作判定を分ける必要がある</h3>
+  <p>
+    宝箱モデルそのものに操作判定を持たせようとすると、形状や向きによって扱いづらくなることがあります。
+    特にAI生成モデルは見た目が複雑になりやすいため、モデル本体をそのまま判定に使うよりも、
+    操作用のPartを別に置いた方が安定しました。
+  </p>
+
+  <div class="point-box">
+    <p>
+      今回は、宝箱の近くに<code>InteractPart</code>を用意し、
+      そこに<code>ProximityPrompt</code>を入れる形にしました。
+      これにより、見た目の宝箱と、プレイヤーが操作する判定部分を分けられます。
+    </p>
+  </div>
+
+  <h3>3. そのままだとギミック化しにくい</h3>
+  <p>
+    AI生成モデルは、見た目の素材としては使えても、
+    「開ける」「報酬を出す」「クリア判定に使う」といったゲーム内処理は別途作る必要があります。
+  </p>
+
+  <p>
+    つまり、AI生成モデルは完成品のゲームギミックではなく、
+    Roblox Studio上で調整して使うための素材として考える方が現実的です。
+  </p>
+
+  <h2>解決方法</h2>
+
+  <h3>Scaleツールでサイズを調整する</h3>
+  <p>
+    まずはRoblox Studio上で宝箱モデルを選択し、Scaleツールを使ってサイズを調整しました。
+    このとき、見た目だけで判断せず、実際にPlayしてプレイヤーとの大きさのバランスを確認しました。
+  </p>
+
+  <ol>
+    <li>宝箱モデルを選択する</li>
+    <li>Scaleツールで少しずつ拡大する</li>
+    <li>プレイヤーの身長と比べる</li>
+    <li>Playして近づいたときの見え方を確認する</li>
+  </ol>
+
+  <h3>InteractPartを別に用意する</h3>
+  <p>
+    次に、宝箱モデルとは別に操作用の<code>InteractPart</code>を置きました。
+    これにより、宝箱の見た目を崩さずに、プレイヤーが操作できる判定範囲を作れます。
+  </p>
+
+  <p>
+    初心者の場合、AI生成モデル本体にすべてを入れようとすると混乱しやすいです。
+    見た目は宝箱モデル、操作判定は<code>InteractPart</code>という形で分けると管理しやすくなります。
+  </p>
+
+  <h3>ProximityPromptで操作できるようにする</h3>
+  <p>
+    最後に、<code>InteractPart</code>へ<code>ProximityPrompt</code>を追加し、
+    プレイヤーが近づいたときに操作できるようにしました。
+  </p>
+
+  <p>
+    これで、AI生成した宝箱モデルを「ただ置いてある飾り」ではなく、
+    ゲーム内で操作できるオブジェクトとして使えるようになります。
+  </p>
+
+  <h2>スクリーンショットで確認</h2>
+
+  <p>
+    ここには、あとでRoblox Studioのスクリーンショットを追加する予定です。
+    最低限、以下の3枚があると記事としてかなりわかりやすくなります。
+  </p>
+
+  <div class="screenshot-placeholder">
+    スクリーンショット1：Roblox Studioに取り込んだ直後の宝箱モデル
+  </div>
+
+  <div class="screenshot-placeholder">
+    スクリーンショット2：Scaleツールでサイズ調整した後の宝箱モデル
+  </div>
+
+  <div class="screenshot-placeholder">
+    スクリーンショット3：InteractPartとProximityPromptを設定した状態
+  </div>
+
+  <h2>今回わかったこと</h2>
+
+  <ul>
+    <li>AI生成3Dモデルは、Roblox Studioに入れるだけでは使いやすいとは限らない</li>
+    <li>サイズ調整はほぼ必須になる</li>
+    <li>宝箱のようなギミック素材は、見た目と操作判定を分けた方が扱いやすい</li>
+    <li><code>InteractPart</code>と<code>ProximityPrompt</code>を使うと、初心者でも実装しやすい</li>
+  </ul>
+
+  <div class="warning-box">
+    <p>
+      この記事は、実際にRoblox Studio上で検証した内容をもとにした記録です。
+      使用するAI生成ツール、出力形式、モデルの形状によって、同じ手順でも結果が変わる可能性があります。
+    </p>
+  </div>
+
+  <h2>まとめ</h2>
+
+  <p>
+    AI生成した宝箱モデルは、Roblox Studioでそのまま使える場面もありますが、
+    実際にゲーム内で使うには、サイズ調整や操作判定の整理が必要でした。
+  </p>
+
+  <p>
+    特に初心者の場合は、AI生成モデル本体にすべてを設定しようとせず、
+    見た目のモデルと操作用のPartを分けるのがおすすめです。
+  </p>
+
+  <p>
+    今後は、この宝箱モデルを使って、鍵アイテムや町探索マップと組み合わせた検証も進めていきます。
+  </p>
+
+  <h2>関連記事</h2>
+  <div class="article-links">
+    <a href="/">Roblox AI Model Lab トップページへ戻る</a>
+    <a href="/#logs">最新の検証ログを見る</a>
+    <a href="/#plans">今後の検証予定を見る</a>
+  </div>
+</main>
+
+<footer class="article-footer">
+  <p>© 2026 Roblox AI Model Lab</p>
+  <p>RobloxはRoblox Corporationの商標です。このサイトはRoblox Corporationとは関係ありません。</p>
+</footer>
+```
+
+  </div>
+</body>
+</html>
