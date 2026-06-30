@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roblox StudioはiPadやスマホで使える？PCとの違いを初心者向けに解説 | Roblox Studio はじめてラボ</title>
+  <meta name="description" content="Roblox StudioはiPadやスマホで使えるのか、Robloxアプリとの違い、Windows・MacなどPCが必要な理由を初心者向けに解説。実際の画面と公式情報をもとに整理します。" />
+  <link rel="canonical" href="https://roblox-ai-model-lab.pages.dev/articles/roblox-studio-ipad-smartphone" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Roblox StudioはiPadやスマホで使える？PCとの違いを初心者向けに解説" />
+  <meta property="og:description" content="RobloxアプリとRoblox Studioの違い、iPad・スマホでできること、PCが必要になる理由を初心者向けに整理します。" />
+  <meta property="og:url" content="https://roblox-ai-model-lab.pages.dev/articles/roblox-studio-ipad-smartphone" />
+  <meta property="og:site_name" content="Roblox Studio はじめてラボ" />
+  <meta property="og:image" content="https://roblox-ai-model-lab.pages.dev/images/articles/roblox-studio-ipad-smartphone/01-app-store-roblox.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    .article-shell {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    .breadcrumb {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .article-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #3730a3;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+    }
+
+    .article-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.18;
+      letter-spacing: -0.04em;
+      margin: 0 0 18px;
+    }
+
+    .article-lead {
+      font-size: 1.08rem;
+      line-height: 1.9;
+      color: #374151;
+      margin-bottom: 18px;
+    }
+
+    .article-meta {
+      color: #6b7280;
+      font-size: 0.92rem;
+      margin-bottom: 28px;
+    }
+
+    .notice-box,
+    .summary-box,
+    .related-box {
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 22px;
+      background: #f9fafb;
+      margin: 28px 0;
+    }
+
+    .notice-box strong,
+    .summary-box strong {
+      color: #111827;
+    }
+
+    .toc {
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 22px;
+      margin: 32px 0;
+      background: #ffffff;
+    }
+
+    .toc h2 {
+      font-size: 1.15rem;
+      margin-top: 0;
+    }
+
+    .toc ol {
+      margin-bottom: 0;
+    }
+
+    .article-content h2 {
+      font-size: clamp(1.55rem, 4vw, 2.1rem);
+      line-height: 1.35;
+      margin: 52px 0 18px;
+      padding-top: 8px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .article-content h3 {
+      font-size: 1.25rem;
+      margin: 30px 0 12px;
+    }
+
+    .article-content p,
+    .article-content li {
+      line-height: 1.9;
+      color: #374151;
+    }
+
+    .article-content a {
+      color: #2563eb;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 22px 0 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 14px 16px;
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.7;
+    }
+
+    th {
+      background: #f3f4f6;
+      color: #111827;
+      white-space: nowrap;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    figure {
+      margin: 32px 0;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      padding: 12px 16px 14px;
+      font-size: 0.9rem;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+      background: #f9fafb;
+    }
+
+    .image-narrow {
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .check-list {
+      padding-left: 1.2em;
+    }
+
+    .check-list li {
+      margin: 8px 0;
+    }
+
+    .next-links {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .next-links a {
+      display: block;
+      padding: 14px 16px;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      background: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .site-footer-note {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid #e5e7eb;
+      color: #6b7280;
+      font-size: 0.92rem;
+      line-height: 1.8;
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://roblox-ai-model-lab.pages.dev/articles/roblox-studio-ipad-smartphone#article",
+    "headline": "Roblox StudioはiPadやスマホで使える？PCとの違いを初心者向けに解説",
+    "description": "Roblox StudioはiPadやスマホで使えるのか、Robloxアプリとの違い、Windows・MacなどPCが必要な理由を初心者向けに解説します。",
+    "image": "https://roblox-ai-model-lab.pages.dev/images/articles/roblox-studio-ipad-smartphone/01-app-store-roblox.png",
+    "datePublished": "2026-07-01",
+    "dateModified": "2026-07-01",
+    "author": {
+      "@type": "Person",
+      "name": "Roblox Studio はじめてラボ運営者"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Roblox Studio はじめてラボ"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://roblox-ai-model-lab.pages.dev/articles/roblox-studio-ipad-smartphone"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "トップ",
+        "item": "https://roblox-ai-model-lab.pages.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "記事",
+        "item": "https://roblox-ai-model-lab.pages.dev/articles/what-is-roblox-studio"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Roblox StudioはiPadやスマホで使える？PCとの違いを初心者向けに解説",
+        "item": "https://roblox-ai-model-lab.pages.dev/articles/roblox-studio-ipad-smartphone"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-logo" href="/">Roblox Studio はじめてラボ</a>
+    <nav class="site-nav" aria-label="サイト内メニュー">
+      <a href="/">トップ</a>
+      <a href="/articles/what-is-roblox-studio">はじめ方</a>
+      <a href="/#categories">カテゴリ</a>
+      <a href="/#about">このサイトについて</a>
+    </nav>
+  </header>
+
+  <main class="article-shell">
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <a href="/">トップ</a> &gt; PC・環境準備 &gt; Roblox StudioはiPadやスマホで使える？
+    </nav>
+
+    <article class="article-content">
+      <header>
+        <div class="article-label">PC・環境準備</div>
+        <h1 class="article-title">Roblox StudioはiPadやスマホで使える？PCとの違いを初心者向けに解説</h1>
+        <p class="article-lead">
+          結論から言うと、RobloxアプリはiPadやスマホでも使えますが、Roblox Studio本体は基本的にWindows / Mac向けの制作ツールです。
+          この記事では、RobloxアプリとRoblox Studioの違い、iPadやスマホでできること、PCが必要になる場面を初心者向けに整理します。
+        </p>
+        <p class="article-meta">
+          公開日：2026年7月1日 ／ 公式情報確認日：2026年7月1日 ／ 対象：Roblox Studioを始めたい初心者・親子・大人の初心者
+        </p>
+      </header>
+
+      <div class="notice-box">
+        <p>
+          <strong>このサイトはRoblox公式サイトではありません。</strong><br />
+          個人がRoblox Studioを実際に触りながら、初心者向けに整理している非公式ガイドです。仕様は変更される可能性があるため、インストール前には公式ページも確認してください。
+        </p>
+      </div>
+
+      <section class="summary-box" aria-label="この記事の結論">
+        <h2 id="summary">先に結論：iPadやスマホだけで本格的にStudio制作するのは難しい</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>やりたいこと</th>
+                <th>iPad・スマホ</th>
+                <th>Windows / Mac</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Robloxで遊ぶ</td>
+                <td>できる</td>
+                <td>できる</td>
+              </tr>
+              <tr>
+                <td>Robloxアプリを使う</td>
+                <td>できる</td>
+                <td>できる</td>
+              </tr>
+              <tr>
+                <td>Roblox Studioでゲームを作る</td>
+                <td>基本的には向かない</td>
+                <td>基本の制作環境</td>
+              </tr>
+              <tr>
+                <td>Creator Hubで調べる</td>
+                <td>できる</td>
+                <td>できる</td>
+              </tr>
+              <tr>
+                <td>本格的なマップ制作・Script編集</td>
+                <td>難しい</td>
+                <td>向いている</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          まず分けて考えたいのは、<strong>Robloxアプリは「遊ぶため」</strong>、<strong>Roblox Studioは「作るため」</strong>という点です。
+        </p>
+      </section>
+
+      <nav class="toc" aria-label="目次">
+        <h2>この記事でわかること</h2>
+        <ol>
+          <li><a href="#app-vs-studio">RobloxアプリとRoblox Studioの違い</a></li>
+          <li><a href="#ipad">iPadでRoblox Studioは使えるのか</a></li>
+          <li><a href="#smartphone">スマホでRoblox Studioは使えるのか</a></li>
+          <li><a href="#pc-required">Roblox Studioを使うならPCが必要なのか</a></li>
+          <li><a href="#use-mobile">iPadやスマホを活かす使い方</a></li>
+          <li><a href="#prepare">子どもが始めるなら何を用意すべきか</a></li>
+          <li><a href="#before-buying-pc">PCを買う前に確認したいこと</a></li>
+          <li><a href="#sources">参考にした公式情報</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="app-vs-studio">RobloxアプリとRoblox Studioは別物</h2>
+      <p>
+        初心者が最初につまずきやすいのが、「Roblox」と「Roblox Studio」を同じものだと思ってしまうことです。
+        App Storeやスマホに入れるRobloxアプリは、主にゲームをプレイするためのアプリです。
+      </p>
+
+      <figure class="image-narrow">
+        <img src="/images/articles/roblox-studio-ipad-smartphone/01-app-store-roblox.png" alt="App Storeに表示されたRobloxアプリの画面" loading="lazy" />
+        <figcaption>App Storeに表示されているRobloxアプリ。iPadやスマホに入れるのは、まず「遊ぶためのRobloxアプリ」です。</figcaption>
+      </figure>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>Robloxアプリ</th>
+              <th>Roblox Studio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>目的</td>
+              <td>ゲームで遊ぶ</td>
+              <td>ゲームやワールドを作る</td>
+            </tr>
+            <tr>
+              <td>主な端末</td>
+              <td>スマホ、タブレット、PC、コンソールなど</td>
+              <td>Windows / Mac</td>
+            </tr>
+            <tr>
+              <td>初心者が使う場面</td>
+              <td>好きなゲームを探す、遊ぶ、アバターを見る</td>
+              <td>Baseplateを開く、パーツを置く、Scriptを書く</td>
+            </tr>
+            <tr>
+              <td>子どもが混同しやすい点</td>
+              <td>「Robloxが入っている」と思う</td>
+              <td>「作る画面」が見つからない</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        つまり、iPadやスマホにRobloxアプリが入っていても、それだけでRoblox Studioの制作画面が使えるわけではありません。
+      </p>
+
+      <h2 id="ipad">iPadでRoblox Studioは使える？</h2>
+      <p>
+        iPadではRobloxアプリを使ってゲームを遊ぶことはできます。また、ブラウザでCreator Hubを開いて、Studioの説明やドキュメントを読むこともできます。
+      </p>
+
+      <figure>
+        <img src="/images/articles/roblox-studio-ipad-smartphone/08-ipad-creator-hub-page.png" alt="iPadのブラウザでRoblox Creator Hubを開いた画面" loading="lazy" />
+        <figcaption>iPadでもCreator Hubのページを読むことはできます。手順確認や親子での下調べには使いやすいです。</figcaption>
+      </figure>
+
+      <h3>iPadでできること</h3>
+      <ul class="check-list">
+        <li>Robloxアプリでゲームを遊ぶ</li>
+        <li>好きなゲームや作りたいゲームの参考を探す</li>
+        <li>Creator Hubや公式ヘルプを読む</li>
+        <li>作りたいゲームのアイデアをメモする</li>
+        <li>親子で操作手順を確認する</li>
+      </ul>
+
+      <h3>iPadだけでは難しいこと</h3>
+      <ul class="check-list">
+        <li>Roblox Studio本体を使って本格的にマップを作る</li>
+        <li>ExplorerやPropertiesを使って細かく編集する</li>
+        <li>Scriptを入力して動作確認する</li>
+        <li>複数ウィンドウを使いながら制作する</li>
+      </ul>
+
+      <p>
+        そのため、「子ども用のiPadがあるからRoblox Studioを始められる」と考えるより、<strong>iPadは遊ぶ・調べる・アイデアを出す端末</strong>、<strong>制作はPCで行う</strong>と分けた方が安全です。
+      </p>
+
+      <h2 id="smartphone">スマホでRoblox Studioは使える？</h2>
+      <p>
+        スマホでもRobloxアプリでゲームを遊ぶことはできます。しかし、スマホだけでRoblox Studioを使って本格的なゲーム制作をするのは現実的ではありません。
+      </p>
+
+      <figure class="image-narrow">
+        <img src="/images/articles/roblox-studio-ipad-smartphone/03-iphone-roblox-app-home.png" alt="iPhoneのRobloxアプリのホーム画面" loading="lazy" />
+        <figcaption>スマホのRobloxアプリ画面。ゲームで遊ぶ入口であり、Roblox Studioの制作画面とは別です。</figcaption>
+      </figure>
+
+      <p>
+        スマホは画面が小さく、キーボードやマウス操作も前提にしにくいため、マップ制作やScript編集には向きません。
+        Roblox Studioを学ぶ場合は、スマホは「遊んで研究する」「アイデアをメモする」使い方に回すのがおすすめです。
+      </p>
+
+      <figure class="image-narrow">
+        <img src="/images/articles/roblox-studio-ipad-smartphone/09-ipad-roblox-search-studio.png" alt="スマホでRoblox Studioを検索した画面" loading="lazy" />
+        <figcaption>スマホでRoblox Studioを検索することはできますが、検索結果を見ることとStudio本体で制作することは別です。</figcaption>
+      </figure>
+
+      <h2 id="pc-required">Roblox Studioを使うならPCが必要？</h2>
+      <p>
+        Roblox Creator Hubの公式ドキュメントでは、Roblox StudioはWindowsとMacで利用できる無料アプリケーションとして案内されています。
+        また、Studioのシステム要件もWindows / macOS向けに示されています。
+      </p>
+
+      <figure>
+        <img src="/images/articles/roblox-studio-ipad-smartphone/04-creator-hub-studio-setup.png" alt="Roblox Creator HubのStudioセットアップページ" loading="lazy" />
+        <figcaption>Roblox Creator HubのStudioセットアップページ。Roblox StudioはWindows / Mac向けの制作アプリとして案内されています。</figcaption>
+      </figure>
+
+      <figure>
+        <img src="/images/articles/roblox-studio-ipad-smartphone/05-studio-system-requirements.png" alt="Roblox Studioのシステム要件表" loading="lazy" />
+        <figcaption>Roblox Studioのシステム要件。公式ページでは最小RAM 3GB、推奨RAM 8GBとされています。</figcaption>
+      </figure>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>最小限</th>
+              <th>推奨</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>OS</td>
+              <td>Windows 10 / macOS 10.14</td>
+              <td>Windows 11 / macOS 14+</td>
+            </tr>
+            <tr>
+              <td>メモリ</td>
+              <td>3GB</td>
+              <td>8GB</td>
+            </tr>
+            <tr>
+              <td>解像度</td>
+              <td>記載なし</td>
+              <td>1600×900以上</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        ここで注意したいのは、「Robloxアプリが動くPC」と「Roblox Studioで快適に作るPC」は同じではないことです。
+        ただ遊ぶだけなら軽めの環境でも動く場合がありますが、制作では画面の広さ、メモリ、マウス・キーボード操作が重要になります。
+      </p>
+
+      <h3>MacでもRoblox Studioは使える？</h3>
+      <p>
+        公式のStudio要件にはmacOSが含まれています。実際にMacでRoblox Studioを開くと、ホーム画面やテンプレート選択画面が表示されます。
+      </p>
+
+      <figure>
+        <img src="/images/articles/roblox-studio-ipad-smartphone/06-mac-roblox-studio-start-screen.png" alt="MacでRoblox Studioを起動したホーム画面" loading="lazy" />
+        <figcaption>MacでRoblox Studioを起動した画面。最近使ったプロジェクトやテンプレートを選べます。</figcaption>
+      </figure>
+
+      <figure>
+        <img src="/images/articles/roblox-studio-ipad-smartphone/07-mac-studio-baseplate.png" alt="Mac版Roblox StudioでBaseplateを開いた制作画面" loading="lazy" />
+        <figcaption>Mac版Roblox StudioでBaseplateを開いた画面。パーツ配置、Explorer、Properties、Outputなどを見ながら制作します。</figcaption>
+      </figure>
+
+      <h2 id="use-mobile">iPadやスマホを活かす使い方</h2>
+      <p>
+        iPadやスマホだけでRoblox Studio制作を完結させるのは難しいですが、まったく役に立たないわけではありません。
+        むしろ、初心者や親子で進める場合は、補助端末としてかなり使えます。
+      </p>
+
+      <h3>1. 作りたいゲームのアイデアメモ</h3>
+      <p>
+        「ジャンプして進むコースを作りたい」「コインを集めるゲームにしたい」など、思いついた内容をメモする用途に向いています。
+      </p>
+
+      <h3>2. 参考ゲームの研究</h3>
+      <p>
+        Robloxアプリで実際に遊びながら、「どんなステージ構成か」「どこで失敗しやすいか」「何が楽しいか」を観察できます。
+        これは、Studioで作る前の企画づくりに役立ちます。
+      </p>
+
+      <h3>3. 手順確認用のサブ画面</h3>
+      <p>
+        PCでRoblox Studioを開き、iPadやスマホでこの記事や公式ドキュメントを表示しておくと、画面を切り替えずに手順を確認できます。
+      </p>
+
+      <h3>4. 親子で確認する画面</h3>
+      <p>
+        子どもがPCで操作し、親がiPadで手順や注意点を確認する形にすると、親子で一緒に進めやすくなります。
+      </p>
+
+      <h2 id="prepare">子どもが始めるなら、まず何を用意すべき？</h2>
+      <p>
+        子どもがRoblox Studioを始めたい場合、最初から高いPCや有料教材を用意する必要はありません。
+        まずは、次の順番で確認すると失敗しにくいです。
+      </p>
+
+      <ol>
+        <li>RobloxアプリとRoblox Studioの違いを親子で確認する</li>
+        <li>家にWindows PCまたはMacがあるか確認する</li>
+        <li>公式のStudio要件を確認する</li>
+        <li>まずはBaseplateを開けるか試す</li>
+        <li>パーツを1つ置いて、移動・拡大・保存まで試す</li>
+        <li>公開や課金設定は、親が一緒に確認する</li>
+      </ol>
+
+      <p>
+        まずは「ゲームを完成させる」より、<strong>Studioを開けた、画面を動かせた、パーツを置けた</strong>というところまでで十分です。
+      </p>
+
+      <h2 id="before-buying-pc">PCを買う前に確認したいこと</h2>
+      <p>
+        Roblox StudioのためにPC購入を考える場合でも、いきなり高額なゲーミングPCを買う必要があるとは限りません。
+        ただし、安すぎるPCを選ぶと、画面が狭い、動作が重い、メモリ不足でつまずく可能性があります。
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>確認項目</th>
+              <th>見るポイント</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>OS</td>
+              <td>WindowsまたはMacか。古すぎるOSではないか。</td>
+            </tr>
+            <tr>
+              <td>メモリ</td>
+              <td>公式推奨は8GB。できれば8GB以上を基準に考える。</td>
+            </tr>
+            <tr>
+              <td>画面サイズ</td>
+              <td>ExplorerやPropertiesを表示するため、画面が小さすぎると作業しにくい。</td>
+            </tr>
+            <tr>
+              <td>マウス</td>
+              <td>Studioの視点移動やパーツ操作では、マウスがあるとかなり楽。</td>
+            </tr>
+            <tr>
+              <td>用途</td>
+              <td>Roblox Studio以外に、学校、調べもの、動画編集、AIツールなども使うか。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        PC選びは、この記事では深く扱いません。次の記事で、初心者向けに「最低ライン」と「避けた方がよい選び方」を分けて整理する予定です。
+      </p>
+
+      <div class="related-box">
+        <p><strong>関連記事予定</strong></p>
+        <div class="next-links">
+          <a href="/articles/roblox-studio-pc-spec">Roblox Studioに必要なPCスペックは？初心者向けに最低ラインを解説</a>
+          <a href="/articles/roblox-studio-download">Roblox Studioのダウンロード方法とインストール前に知っておくこと</a>
+        </div>
+      </div>
+
+      <h2 id="mobile-requirements">補足：モバイル要件はRobloxアプリ用として読む</h2>
+      <p>
+        Roblox公式ヘルプには、iPhone / iPadやAndroid向けのモバイル要件もあります。
+        ただし、これはRobloxモバイルアプリを使うための要件です。Roblox Studio本体のシステム要件とは分けて読みましょう。
+      </p>
+
+      <figure>
+        <img src="/images/articles/roblox-studio-ipad-smartphone/10-pc-spec-official-page.png" alt="Roblox公式ヘルプのコンピューターとOS要件ページ" loading="lazy" />
+        <figcaption>Robloxアプリ側のコンピューター・OS要件ページ。Studioの要件とは混同しないように注意します。</figcaption>
+      </figure>
+
+      <h2 id="next">次に読むべき記事</h2>
+      <p>
+        iPadやスマホとPCの違いがわかったら、次は自分の状況に合わせて読み進めてください。
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>悩み</th>
+              <th>次に読む記事</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Roblox Studio自体がよくわからない</td>
+              <td><a href="/articles/what-is-roblox-studio">Roblox Studioとは？使い方・始め方・できることを初心者向けに解説</a></td>
+            </tr>
+            <tr>
+              <td>PCスペックが不安</td>
+              <td><a href="/articles/roblox-studio-pc-spec">Roblox Studioに必要なPCスペックは？初心者向けに最低ラインを解説</a></td>
+            </tr>
+            <tr>
+              <td>インストール前に確認したい</td>
+              <td><a href="/articles/roblox-studio-download">Roblox Studioのダウンロード方法とインストール前に知っておくこと</a></td>
+            </tr>
+            <tr>
+              <td>Studioの画面の意味がわからない</td>
+              <td><a href="/articles/roblox-studio-screen-guide">Roblox Studioの画面の見方｜Explorer・Properties・Outputを初心者向けに解説</a></td>
+            </tr>
+            <tr>
+              <td>保存と公開の違いが不安</td>
+              <td><a href="/articles/roblox-studio-save-publish">Roblox Studioで保存できない時の確認ポイント｜SaveとPublishの違い</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="conclusion">まとめ</h2>
+      <p>
+        Roblox Studioは、Robloxのゲームやワールドを作るための制作ツールです。
+        RobloxアプリはiPadやスマホでも使えますが、Roblox Studio本体は基本的にWindows / Mac向けです。
+      </p>
+
+      <ul>
+        <li>iPadやスマホでは、Robloxアプリでゲームを遊べる</li>
+        <li>Roblox Studioで本格的に作るなら、基本はWindows / Mac</li>
+        <li>iPadやスマホは、アイデアメモ、参考ゲーム研究、手順確認に使える</li>
+        <li>PCを買う前に、OS・メモリ・画面サイズを確認する</li>
+        <li>子どもが使う場合は、課金・公開範囲・チャット設定も親子で確認する</li>
+      </ul>
+
+      <p>
+        「iPadにRobloxがあるから、Roblox Studioもできるはず」と考えるとつまずきやすいです。
+        まずは、遊ぶアプリと作るStudioを分けて考えましょう。
+      </p>
+
+      <h2 id="sources">参考にした公式情報</h2>
+      <p>
+        この記事では、以下の公式ページを確認したうえで、初心者向けに内容を整理しています。
+      </p>
+      <ul>
+        <li><a href="https://create.roblox.com/docs/studio/setup" target="_blank" rel="noopener noreferrer">Roblox Studio setup｜Roblox Creator Hub</a></li>
+        <li><a href="https://create.roblox.com/docs/ja-jp/studio/setup" target="_blank" rel="noopener noreferrer">Roblox Studioのセットアップ｜Roblox Creator Hub</a></li>
+        <li><a href="https://create.roblox.com/docs/education/resources/frequently-asked-questions-education" target="_blank" rel="noopener noreferrer">Frequently asked questions｜Roblox Creator Hub</a></li>
+        <li><a href="https://en.help.roblox.com/hc/en-us/articles/203625474-Roblox-Mobile-System-Requirements" target="_blank" rel="noopener noreferrer">Roblox Mobile System Requirements｜Roblox Support</a></li>
+        <li><a href="https://apps.apple.com/jp/app/roblox-%E3%83%AD%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E3%82%B9/id431946152" target="_blank" rel="noopener noreferrer">Roblox（ロブロックス）｜App Store</a></li>
+      </ul>
+
+      <div class="site-footer-note">
+        <p>
+          ※このサイトはRoblox公式サイトではありません。RobloxおよびRoblox Studioに関する名称は、説明目的で使用しています。<br />
+          ※掲載内容は2026年7月1日時点の確認内容です。公式仕様や対応環境は変更される可能性があります。
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Roblox Studio はじめてラボは、Roblox Studio初心者向けの非公式ガイドです。Roblox公式サイトではありません。</p>
+    <p>&copy; 2026 Roblox Studio はじめてラボ</p>
+  </footer>
+</body>
+</html>
