@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Roblox Studioとは？使い方・始め方・できることを初心者向けに解説 | Roblox Studio はじめてラボ</title>
+  <meta name="description" content="Roblox Studioとは何か、Robloxアプリとの違い、使い方・始め方・できることを初心者向けに解説。iPadやスマホで使えるのか、PCが必要か、最初に覚える画面や保存・公開の違いも実際の画面つきで紹介します。" />
+
+  <link rel="canonical" href="https://roblox-ai-model-lab.pages.dev/articles/what-is-roblox-studio.html" />
+  <link rel="stylesheet" href="../styles.css" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Roblox Studioとは？使い方・始め方・できることを初心者向けに解説" />
+  <meta property="og:description" content="Roblox Studioとは何か、Robloxアプリとの違い、できること、最初に覚える画面、保存と公開の違いまで初心者向けに解説します。" />
+  <meta property="og:url" content="https://roblox-ai-model-lab.pages.dev/articles/what-is-roblox-studio.html" />
+  <meta property="og:site_name" content="Roblox Studio はじめてラボ" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      line-height: 1.8;
+      color: #1f2937;
+      background: #f8fafc;
+    }
+
+    .site-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .site-header-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .site-logo {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #111827;
+      text-decoration: none;
+    }
+
+    .site-nav {
+      display: flex;
+      gap: 14px;
+      font-size: 0.92rem;
+      flex-wrap: wrap;
+    }
+
+    .site-nav a {
+      color: #4b5563;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover {
+      text-decoration: underline;
+    }
+
+    .article-wrapper {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    .breadcrumb {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    .article-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    }
+
+    .article-label {
+      display: inline-block;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #1d4ed8;
+      background: #dbeafe;
+      border-radius: 999px;
+      padding: 4px 12px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 4vw, 2.75rem);
+      line-height: 1.35;
+      margin: 0 0 16px;
+      color: #111827;
+    }
+
+    .lead {
+      font-size: 1.05rem;
+      color: #374151;
+      margin-bottom: 24px;
+    }
+
+    .article-meta {
+      font-size: 0.9rem;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 12px 0;
+      margin: 24px 0;
+    }
+
+    .notice {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: #7c2d12;
+      font-size: 0.95rem;
+      margin: 22px 0;
+    }
+
+    .toc {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 20px;
+      margin: 28px 0;
+    }
+
+    .toc-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .toc ol {
+      margin: 0;
+      padding-left: 1.4em;
+    }
+
+    .toc a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      text-decoration: underline;
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      line-height: 1.45;
+      margin-top: 48px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e5e7eb;
+      color: #111827;
+    }
+
+    h3 {
+      font-size: 1.22rem;
+      margin-top: 28px;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    ul, ol {
+      padding-left: 1.5em;
+      margin: 0 0 18px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0 24px;
+      font-size: 0.95rem;
+      overflow-wrap: anywhere;
+    }
+
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 700;
+    }
+
+    figure {
+      margin: 28px 0;
+    }
+
+    figure img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      display: block;
+      background: #ffffff;
+    }
+
+    figcaption {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    .related-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      padding: 18px;
+      margin: 28px 0;
+    }
+
+    .related-box p {
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #1e3a8a;
+    }
+
+    .related-box a {
+      color: #1d4ed8;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .related-box a:hover {
+      text-decoration: underline;
+    }
+
+    .summary-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 14px;
+      padding: 18px;
+      margin: 28px 0;
+    }
+
+    .source-list a {
+      color: #2563eb;
+      word-break: break-word;
+    }
+
+    .site-footer {
+      border-top: 1px solid #e5e7eb;
+      background: #ffffff;
+      padding: 28px 20px;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    .site-footer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 720px) {
+      .site-header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .article-card {
+        padding: 22px 18px;
+        border-radius: 14px;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Roblox Studioとは？使い方・始め方・できることを初心者向けに解説",
+    "description": "Roblox Studioとは何か、Robloxアプリとの違い、使い方・始め方・できることを初心者向けに解説。iPadやスマホで使えるのか、PCが必要か、最初に覚える画面や保存・公開の違いも紹介します。",
+    "inLanguage": "ja",
+    "author": {
+      "@type": "Person",
+      "name": "ゆう"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Roblox Studio はじめてラボ"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://roblox-ai-model-lab.pages.dev/articles/what-is-roblox-studio.html"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="site-logo" href="../index.html">Roblox Studio はじめてラボ</a>
+      <nav class="site-nav" aria-label="サイト内メニュー">
+        <a href="../index.html">トップ</a>
+        <a href="../index.html#articles">記事一覧</a>
+        <a href="../index.html#categories">カテゴリ</a>
+        <a href="../index.html#about">このサイトについて</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article-wrapper">
+    <div class="breadcrumb">
+      <a href="../index.html">トップ</a> &gt; はじめ方 &gt; Roblox Studioとは？
+    </div>
+
+    <article class="article-card">
+      <div class="article-label">はじめ方</div>
+
+      <h1>Roblox Studioとは？使い方・始め方・できることを初心者向けに解説</h1>
+
+      <p class="lead">
+        Roblox Studioは、Robloxのゲームを「遊ぶ」ためではなく、自分でゲームやワールドを「作る」ための公式制作ツールです。
+      </p>
+
+      <div class="article-meta">
+        公開日：2026年6月30日 ／ 対象：Roblox Studioを初めて触る人・親子・大人の初心者
+      </div>
+
+      <p>
+        この記事では、Roblox Studioを初めて触る人向けに、Robloxアプリとの違い、できること、最初に見る画面、保存と公開の違いまで、実際の画面を使ってやさしく説明します。
+      </p>
+
+      <p>
+        「Roblox Studioを始めたいけれど、何から見ればいいかわからない」「iPadやスマホでも使えるの？」「Scriptができないと無理？」という人は、まずこの記事から読んでみてください。
+      </p>
+
+      <div class="notice">
+        このサイトはRoblox公式サイトではありません。Roblox Studioを実際に触りながら、初心者向けにわかりやすく整理した非公式の学習ガイドです。
+      </div>
+
+      <section class="toc" aria-label="目次">
+        <div class="toc-title">この記事でわかること</div>
+        <ol>
+          <li><a href="#what-is">Roblox Studioとは</a></li>
+          <li><a href="#app-difference">Robloxアプリとの違い</a></li>
+          <li><a href="#can-do">Roblox Studioでできること</a></li>
+          <li><a href="#free">無料で使えるのか</a></li>
+          <li><a href="#ipad-smartphone">iPadやスマホで使えるのか</a></li>
+          <li><a href="#pc">PCは必要なのか</a></li>
+          <li><a href="#first-screen">最初に出る画面</a></li>
+          <li><a href="#baseplate">初心者はまずBaseplate</a></li>
+          <li><a href="#explorer-properties">ExplorerとProperties</a></li>
+          <li><a href="#save-publish">保存と公開の違い</a></li>
+        </ol>
+      </section>
+
+      <h2 id="what-is">Roblox Studioとは</h2>
+
+      <p>
+        Roblox Studioは、Robloxのゲームやワールドを作るための制作ツールです。
+      </p>
+
+      <p>
+        Robloxで遊んでいるゲームは、誰かがRoblox Studioなどを使って作ったものです。つまり、Roblox Studioを使うと、遊ぶ側から「作る側」に回ることができます。
+      </p>
+
+      <figure>
+        <img src="/images/articles/what-is-roblox-studio/01-creator-hub-studio.png" alt="Roblox Creator HubのStudio紹介ページ" loading="lazy">
+        <figcaption>Roblox Studioは公式のCreator Hubから確認できます。</figcaption>
+      </figure>
+
+      <p>Roblox Studioでは、たとえば次のようなことができます。</p>
+
+      <ul>
+        <li>地面や建物を置いてマップを作る</li>
+        <li>コインやアイテムを配置する</li>
+        <li>ドアやジャンプ台などの仕掛けを作る</li>
+        <li>チェックポイントやリスポーン地点を作る</li>
+        <li>Scriptでゲームに動きをつける</li>
+        <li>作ったゲームをRoblox上に公開する</li>
+      </ul>
+
+      <p>
+        最初から全部できる必要はありません。初心者はまず、画面の見方を覚えて、パーツを1つ置いて、保存するところから始めれば十分です。
+      </p>
+
+      <h2 id="app-difference">RobloxアプリとRoblox Studioの違い</h2>
+
+      <p>
+        Robloxを始めたばかりだと、まず混乱しやすいのが「Robloxアプリ」と「Roblox Studio」の違いです。
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>Robloxアプリ</th>
+            <th>Roblox Studio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>目的</td>
+            <td>ゲームで遊ぶ</td>
+            <td>ゲームを作る</td>
+          </tr>
+          <tr>
+            <td>主な使い方</td>
+            <td>他の人が作ったゲームに入る</td>
+            <td>自分でマップや仕掛けを作る</td>
+          </tr>
+          <tr>
+            <td>端末</td>
+            <td>スマホ、タブレット、PCなど</td>
+            <td>主にWindows / Mac</td>
+          </tr>
+          <tr>
+            <td>初心者がやること</td>
+            <td>好きなゲームを探して遊ぶ</td>
+            <td>Baseplateを開いてパーツを置く</td>
+          </tr>
+          <tr>
+            <td>例</td>
+            <td>Obbyで遊ぶ、友達と遊ぶ</td>
+            <td>Obbyを作る、コインを置く</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Robloxアプリは「遊ぶためのアプリ」です。Roblox Studioは「作るためのソフト」です。
+      </p>
+
+      <p>
+        ここを混同すると、「iPadにRobloxは入っているのに、Studioが見つからない」「スマホでゲームは遊べるのに、作る画面が出てこない」という状態になりやすいです。
+      </p>
+
+      <h2 id="can-do">Roblox Studioでできること</h2>
+
+      <p>
+        Roblox Studioでは、本格的なゲームも作れますが、初心者はいきなり大きなゲームを目指さなくて大丈夫です。
+      </p>
+
+      <h3>簡単なマップを作る</h3>
+      <p>
+        地面、壁、台、坂道などを置いて、自分だけのマップを作れます。ジャンプして進むコースや、小さな広場のような場所から始めるとわかりやすいです。
+      </p>
+
+      <h3>コインやアイテムを置く</h3>
+      <p>
+        ゲーム内にコインやアイテムを置くこともできます。最初は見た目だけのコインでもOKです。慣れてきたら、Scriptを使って「コインに触れたら点数が増える」ような仕組みにできます。
+      </p>
+
+      <h3>ドアや仕掛けを作る</h3>
+      <p>
+        ボタンを押したらドアが開く、特定の場所に触れたらワープする、といった仕掛けも作れます。ただし、このあたりからScriptを使うことが増えるので、最初から急がなくて大丈夫です。
+      </p>
+
+      <h3>チェックポイントを作る</h3>
+      <p>
+        Obbyのようなゲームでは、途中から再開できるチェックポイントがよく使われます。チェックポイントは、Roblox Studio初心者がScriptを学ぶ題材としても使いやすいです。
+      </p>
+
+      <h3>作ったゲームを公開する</h3>
+      <p>
+        Roblox Studioで作ったゲームは、Roblox上に公開できます。ただし、保存と公開は別です。作ったものを残すだけなら保存、他の人が遊べるようにするなら公開、という違いがあります。
+      </p>
+
+      <h2 id="free">Roblox Studioは無料で使える？</h2>
+
+      <p>
+        Roblox Studio自体は無料で使えます。
+      </p>
+
+      <p>
+        ただし、RobloxにはRobuxなどの課金要素もあります。そのため、子どもが使う場合は、Studioが無料で使えることと、Roblox内の課金要素は分けて考える必要があります。
+      </p>
+
+      <p>
+        初心者がRoblox Studioを触り始めるだけなら、まずは無料で基本操作を試せます。
+      </p>
+
+      <p>親子で使う場合は、次の点も確認しておくと安心です。</p>
+
+      <ul>
+        <li>Robloxアカウントの設定</li>
+        <li>課金制限</li>
+        <li>チャットやコミュニケーション設定</li>
+        <li>作ったゲームの公開範囲</li>
+        <li>共同制作を使うかどうか</li>
+      </ul>
+
+      <h2 id="ipad-smartphone">iPadやスマホでRoblox Studioは使える？</h2>
+
+      <p>
+        ここは初心者がかなり迷いやすいポイントです。
+      </p>
+
+      <p>
+        Robloxアプリは、iPadやスマホでも使えます。しかし、Roblox Studioは基本的にWindows / Mac向けの制作ツールです。
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>やりたいこと</th>
+            <th>考え方</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Robloxで遊ぶ</td>
+            <td>iPadやスマホでもできる</td>
+          </tr>
+          <tr>
+            <td>Roblox Studioで作る</td>
+            <td>基本はPCが必要</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        iPadやスマホで「Roblox Studio」と検索している人は、RobloxアプリとStudioを混同している可能性があります。
+      </p>
+
+      <div class="related-box">
+        <p>関連記事予定</p>
+        <a href="/articles/roblox-studio-ipad-smartphone.html">Roblox StudioはiPadやスマホで使える？PCとの違いを初心者向けに解説</a>
+      </div>
+
+      <h2 id="pc">Roblox StudioにPCは必要？</h2>
+
+      <p>
+        Roblox Studioを使うなら、基本的にはWindowsまたはMacのPCが必要です。
+      </p>
+
+      <p>
+        公式情報では、Roblox StudioはWindows / Mac向けの無料アプリとして案内されています。また、RAMは最小3GB、推奨8GBとされています。
+      </p>
+
+      <p>
+        ただし、初心者がBaseplateを開いて、Partを置いて、簡単なゲームを試すだけなら、いきなり高額なゲーミングPCを買う必要はない可能性があります。
+      </p>
+
+      <p>一方で、次のような場合はPCの性能が足りないと重くなりやすいです。</p>
+
+      <ul>
+        <li>大きなマップを作る</li>
+        <li>3Dモデルをたくさん置く</li>
+        <li>高画質な素材を使う</li>
+        <li>複数のアプリを同時に開く</li>
+        <li>画面録画をしながら作業する</li>
+      </ul>
+
+      <div class="related-box">
+        <p>関連記事予定</p>
+        <a href="/articles/roblox-studio-pc-spec.html">Roblox Studioに必要なPCスペックは？初心者向けに最低ラインを解説</a>
+      </div>
+
+      <h2 id="first-screen">Roblox Studioを開くと最初に出る画面</h2>
+
+      <p>
+        Roblox Studioを起動すると、ホーム画面が表示されます。
+      </p>
+
+      <figure>
+        <img src="/images/articles/what-is-roblox-studio/02-studio-start-screen.png" alt="Roblox Studioを起動した直後のホーム画面" loading="lazy">
+        <figcaption>Studioを開くと、最近使ったプロジェクトやテンプレートが表示されます。</figcaption>
+      </figure>
+
+      <p>
+        この画面では、最近使ったプロジェクトを開いたり、新しいプロジェクトを作ったりできます。
+      </p>
+
+      <p>左側には、次のようなメニューがあります。</p>
+
+      <figure>
+        <img src="/images/articles/what-is-roblox-studio/03-studio-left-menu.png" alt="Roblox Studioの左メニュー" loading="lazy">
+        <figcaption>左メニューから新規作成・最近使ったファイル・テンプレートなどを選べます。</figcaption>
+      </figure>
+
+      <table>
+        <thead>
+          <tr>
+            <th>メニュー</th>
+            <th>意味</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>New Experience</td>
+            <td>新しい制作を始める</td>
+          </tr>
+          <tr>
+            <td>Recents</td>
+            <td>最近開いたファイルを見る</td>
+          </tr>
+          <tr>
+            <td>Home</td>
+            <td>ホーム画面に戻る</td>
+          </tr>
+          <tr>
+            <td>Experiences</td>
+            <td>自分のExperienceを確認する</td>
+          </tr>
+          <tr>
+            <td>Templates</td>
+            <td>テンプレートから始める</td>
+          </tr>
+          <tr>
+            <td>Archive</td>
+            <td>アーカイブしたものを見る</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        初心者は、まずテンプレートから始めるのがわかりやすいです。
+      </p>
+
+      <h2 id="baseplate">初心者はまずBaseplateから始める</h2>
+
+      <p>
+        Roblox Studioには、いろいろなテンプレートがあります。初心者におすすめなのは、まず「Baseplate」から始めることです。
+      </p>
+
+      <p>
+        Baseplateは、最初から余計なものが少ないシンプルな土台です。何もない場所に近いので、パーツを置いたり、画面の動かし方を覚えたりするのに向いています。
+      </p>
+
+      <figure>
+        <img src="/images/articles/what-is-roblox-studio/04-baseplate-open.png" alt="Roblox StudioでBaseplateを開いた画面" loading="lazy">
+        <figcaption>初心者はまずBaseplateから始めると、画面の役割を覚えやすいです。</figcaption>
+      </figure>
+
+      <p>
+        最初から完成度の高いテンプレートを選ぶと、画面の中にあるものが多くて、どこを触ればよいか迷いやすくなります。
+      </p>
+
+      <p>まずはBaseplateで、次の流れを試すのがおすすめです。</p>
+
+      <ol>
+        <li>画面を動かす</li>
+        <li>Partを置く</li>
+        <li>置いたPartを選ぶ</li>
+        <li>色や大きさを変える</li>
+        <li>保存する</li>
+      </ol>
+
+      <h2 id="explorer-properties">最初に覚えたい画面：ExplorerとProperties</h2>
+
+      <p>
+        Roblox Studioで最初に覚えたい画面は、ExplorerとPropertiesです。
+      </p>
+
+      <figure>
+        <img src="/images/articles/what-is-roblox-studio/05-explorer-properties.png" alt="Roblox StudioのExplorerとProperties画面" loading="lazy">
+        <figcaption>ExplorerとPropertiesは、Roblox Studioでよく使う基本画面です。</figcaption>
+      </figure>
+
+      <h3>Explorerとは</h3>
+
+      <p>
+        Explorerは、ゲーム内にあるものを一覧で見る場所です。
+      </p>
+
+      <p>
+        たとえば、Workspace、Players、Lighting、ServerScriptServiceなどが並んでいます。
+      </p>
+
+      <p>
+        最初は英語が多くて難しく見えますが、全部を覚える必要はありません。
+      </p>
+
+      <p>初心者はまず、次の名前に見慣れていけばOKです。</p>
+
+      <ul>
+        <li>Workspace</li>
+        <li>Players</li>
+        <li>Lighting</li>
+        <li>ServerScriptService</li>
+        <li>StarterGui</li>
+        <li>StarterPack</li>
+      </ul>
+
+      <h3>Propertiesとは</h3>
+
+      <p>
+        Propertiesは、選んだものの設定を変える場所です。
+      </p>
+
+      <p>
+        たとえば、パーツを選ぶと、色、大きさ、素材、透明度などを変更できます。
+      </p>
+
+      <p>
+        画面の中で何かを選ぶと、Explorerでも選択され、Propertiesにも設定が表示されます。
+      </p>
+
+      <figure>
+        <img src="/images/articles/what-is-roblox-studio/07-add-part.png" alt="Roblox StudioでSpawnLocationを選択した画面" loading="lazy">
+        <figcaption>画面内のものを選ぶと、ExplorerとPropertiesも連動します。</figcaption>
+      </figure>
+
+      <p>Roblox Studioでは、次の流れをよく使います。</p>
+
+      <ol>
+        <li>画面でオブジェクトを選ぶ</li>
+        <li>Explorerで場所を確認する</li>
+        <li>Propertiesで設定を変える</li>
+      </ol>
+
+      <div class="related-box">
+        <p>関連記事予定</p>
+        <a href="/articles/roblox-studio-screen-guide.html">Roblox Studioの画面の見方｜Explorer・Properties・Outputを初心者向けに解説</a>
+      </div>
+
+      <h2 id="output">Outputとは</h2>
+
+      <p>
+        Outputは、Roblox Studioのメッセージやエラーを確認する場所です。
+      </p>
+
+      <figure>
+        <img src="/images/articles/what-is-roblox-studio/06-output-window.png" alt="Roblox StudioのOutput画面" loading="lazy">
+        <figcaption>Outputには、Scriptのエラーや実行結果が表示されます。</figcaption>
+      </figure>
+
+      <p>
+        最初はあまり使わないかもしれません。しかし、Scriptを書くようになると、Outputはかなり大事になります。
+      </p>
+
+      <p>
+        たとえば、Scriptに間違いがあると、Outputにエラーが表示されます。ゲームが思った通りに動かないときも、Outputを見ることで原因を探しやすくなります。
+      </p>
+
+      <p>
+        初心者のうちは、「Outputは、エラーやメッセージを見る場所」くらいに覚えておけば大丈夫です。
+      </p>
+
+      <h2 id="script">Scriptは最初から必要？</h2>
+
+      <p>
+        Roblox Studioでは、Scriptを使うとゲームに動きをつけられます。
+      </p>
+
+      <p>たとえば、次のような仕組みは、Scriptを使うことが多いです。</p>
+
+      <ul>
+        <li>コインに触れたら点数が増える</li>
+        <li>ドアが開く</li>
+        <li>ボタンを押すと何かが起きる</li>
+        <li>チェックポイントを通ると復活地点が変わる</li>
+      </ul>
+
+      <p>
+        ただし、最初からScriptを覚えようとしなくて大丈夫です。
+      </p>
+
+      <p>初心者はまず、次のところまでできれば十分です。</p>
+
+      <ol>
+        <li>Studioを開く</li>
+        <li>Baseplateを選ぶ</li>
+        <li>Partを置く</li>
+        <li>動かす</li>
+        <li>大きさや色を変える</li>
+        <li>保存する</li>
+      </ol>
+
+      <p>
+        Scriptは、画面操作に少し慣れてからで問題ありません。
+      </p>
+
+      <div class="related-box">
+        <p>関連記事予定</p>
+        <a href="/articles/roblox-studio-script-location.html">Roblox StudioのScriptはどこに置く？初心者が間違えやすい場所を解説</a>
+      </div>
+
+      <h2 id="save-publish">保存と公開は別</h2>
+
+      <p>
+        Roblox Studio初心者がつまずきやすいのが、保存と公開の違いです。
+      </p>
+
+      <p>
+        Fileメニューを見ると、SaveとPublishの両方があります。
+      </p>
+
+      <figure>
+        <img src="/images/articles/what-is-roblox-studio/08-file-save-publish.png" alt="Roblox StudioのFileメニューにあるSaveとPublish" loading="lazy">
+        <figcaption>FileメニューにはSaveとPublishの両方があります。</figcaption>
+      </figure>
+
+      <table>
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>意味</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Save</td>
+            <td>作業内容を保存する</td>
+          </tr>
+          <tr>
+            <td>Publish</td>
+            <td>Roblox上に公開する</td>
+          </tr>
+          <tr>
+            <td>Save to File</td>
+            <td>自分のPCにファイルとして保存する</td>
+          </tr>
+          <tr>
+            <td>Save to Roblox</td>
+            <td>Roblox側に保存する</td>
+          </tr>
+          <tr>
+            <td>Publish to Roblox</td>
+            <td>Roblox上に公開する</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        初心者は、まず「作ったものを消さない」ことが大事です。いきなり公開を目指すより、まずは保存の方法を覚えましょう。
+      </p>
+
+      <p>
+        公開は、ゲーム名、説明、公開範囲、対応デバイスなども関係します。子どもが使う場合は、親が一緒に確認した方が安心です。
+      </p>
+
+      <div class="related-box">
+        <p>関連記事予定</p>
+        <a href="/articles/roblox-studio-save-publish.html">Roblox Studioで保存できない時の確認ポイント｜SaveとPublishの違い</a>
+      </div>
+
+      <div class="related-box">
+        <p>関連記事予定</p>
+        <a href="/articles/roblox-studio-publish-guide.html">Roblox Studioでゲームを公開する方法｜公開できない時の原因も解説</a>
+      </div>
+
+      <h2 id="parent-check">子どもがRoblox Studioを使う場合に親が確認したいこと</h2>
+
+      <p>
+        Roblox Studioは、子どもでも興味を持ちやすい制作ツールです。ただし、親子で使う場合は、次の点を確認しておくと安心です。
+      </p>
+
+      <h3>課金設定</h3>
+      <p>
+        Roblox Studioを触るだけなら無料で始められます。ただし、Roblox全体にはRobuxなどの課金要素があります。子どもが使う場合は、課金制限や購入設定を確認しておきましょう。
+      </p>
+
+      <h3>公開範囲</h3>
+      <p>
+        作ったゲームを公開すると、他の人が遊べる状態になる場合があります。最初は、公開する前に親子で内容を確認するのがおすすめです。
+      </p>
+
+      <h3>チャットや共同制作</h3>
+      <p>
+        Roblox Studioには、共同制作に関係する機能もあります。便利な一方で、子どもが使う場合は、誰と一緒に作るのか、どの設定にするのかを確認しておくと安心です。
+      </p>
+
+      <h3>個人情報</h3>
+      <p>
+        ゲーム名や説明文に、本名、学校名、住んでいる場所などを入れないように注意しましょう。これはRoblox Studioに限らず、子どもがインターネット上で作品を公開するときの基本です。
+      </p>
+
+      <h2 id="next-step">初心者が次にやること</h2>
+
+      <p>
+        この記事を読んだら、次は実際にRoblox Studioを開いて、次の順番で進めるのがおすすめです。
+      </p>
+
+      <ol>
+        <li>Roblox Studioを起動する</li>
+        <li>Baseplateを開く</li>
+        <li>画面を動かしてみる</li>
+        <li>Partを1つ置く</li>
+        <li>Partの色や大きさを変える</li>
+        <li>保存する</li>
+        <li>画面の名前を覚える</li>
+      </ol>
+
+      <p>
+        いきなり完成したゲームを作ろうとしなくて大丈夫です。
+      </p>
+
+      <p>
+        まずは、「自分で1つ置けた」「動かせた」「保存できた」という小さな成功体験を作ることが大事です。
+      </p>
+
+      <h2 id="related">次に読むべき記事</h2>
+
+      <p>
+        Roblox Studioの全体像がわかったら、次は自分がつまずいているところに合わせて読み進めてください。
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>悩み</th>
+            <th>次に読む記事</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>iPadやスマホで使えるか知りたい</td>
+            <td><a href="/articles/roblox-studio-ipad-smartphone.html">Roblox StudioはiPadやスマホで使える？PCとの違いを初心者向けに解説</a></td>
+          </tr>
+          <tr>
+            <td>PCスペックが不安</td>
+            <td><a href="/articles/roblox-studio-pc-spec.html">Roblox Studioに必要なPCスペックは？初心者向けに最低ラインを解説</a></td>
+          </tr>
+          <tr>
+            <td>インストール前に確認したい</td>
+            <td><a href="/articles/roblox-studio-download.html">Roblox Studioのダウンロード方法とインストール前に知っておくこと</a></td>
+          </tr>
+          <tr>
+            <td>画面の意味がわからない</td>
+            <td><a href="/articles/roblox-studio-screen-guide.html">Roblox Studioの画面の見方｜Explorer・Properties・Outputを初心者向けに解説</a></td>
+          </tr>
+          <tr>
+            <td>保存でつまずいた</td>
+            <td><a href="/articles/roblox-studio-save-publish.html">Roblox Studioで保存できない時の確認ポイント｜SaveとPublishの違い</a></td>
+          </tr>
+          <tr>
+            <td>公開方法を知りたい</td>
+            <td><a href="/articles/roblox-studio-publish-guide.html">Roblox Studioでゲームを公開する方法｜公開できない時の原因も解説</a></td>
+          </tr>
+          <tr>
+            <td>Scriptを始めたい</td>
+            <td><a href="/articles/roblox-studio-script-location.html">Roblox StudioのScriptはどこに置く？初心者が間違えやすい場所を解説</a></td>
+          </tr>
+          <tr>
+            <td>簡単なゲームを作りたい</td>
+            <td><a href="/articles/roblox-studio-simple-game.html">Roblox Studioで簡単なゲームを作る方法｜初心者向けミニゲーム入門</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="summary">まとめ</h2>
+
+      <div class="summary-box">
+        <p>
+          Roblox Studioは、Robloxのゲームを作るための公式制作ツールです。
+        </p>
+        <p>
+          Robloxアプリはゲームで遊ぶもの、Roblox Studioはゲームを作るものです。ここを分けて考えると、かなりわかりやすくなります。
+        </p>
+      </div>
+
+      <p>
+        初心者は、最初からScriptや公開まで進めなくて大丈夫です。
+      </p>
+
+      <p>まずは、次の流れから始めましょう。</p>
+
+      <ul>
+        <li>Roblox Studioを開く</li>
+        <li>Baseplateを選ぶ</li>
+        <li>Partを置く</li>
+        <li>ExplorerとPropertiesを見る</li>
+        <li>保存する</li>
+      </ul>
+
+      <p>
+        慣れてきたら、コイン、ドア、チェックポイント、ミニゲーム作りへ少しずつ進めばOKです。
+      </p>
+
+      <p>
+        このサイトでは、Roblox Studioを初めて触る人向けに、実際の画面と失敗しやすいポイントを交えながら、少しずつ解説していきます。
+      </p>
+
+      <h2 id="sources">参考にした公式情報</h2>
+
+      <p>
+        この記事では、Roblox Creator Hubの公式ドキュメントを確認したうえで、初心者向けに内容を整理しています。
+      </p>
+
+      <ul class="source-list">
+        <li><a href="https://create.roblox.com/docs/studio" target="_blank" rel="noopener noreferrer">Roblox Studio 公式ドキュメント</a></li>
+        <li><a href="https://create.roblox.com/docs/studio/setup" target="_blank" rel="noopener noreferrer">Roblox Studio setup</a></li>
+        <li><a href="https://create.roblox.com/docs/studio/explorer" target="_blank" rel="noopener noreferrer">Explorer 公式ドキュメント</a></li>
+        <li><a href="https://create.roblox.com/docs/studio/properties" target="_blank" rel="noopener noreferrer">Properties 公式ドキュメント</a></li>
+        <li><a href="https://create.roblox.com/docs/studio/output" target="_blank" rel="noopener noreferrer">Output 公式ドキュメント</a></li>
+        <li><a href="https://create.roblox.com/docs/production/publishing/publish-experiences-and-places" target="_blank" rel="noopener noreferrer">Publish experiences and places</a></li>
+      </ul>
+
+      <div class="notice">
+        ※このサイトはRoblox公式サイトではありません。RobloxおよびRoblox Studioに関する名称は、説明目的で使用しています。
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <p>
+        Roblox Studio はじめてラボは、Roblox Studio初心者向けの非公式ガイドです。Roblox公式サイトではありません。
+      </p>
+      <p>
+        &copy; 2026 Roblox Studio はじめてラボ
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
