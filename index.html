@@ -9,14 +9,14 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-V412S041CP');
 </script>
-  
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Roblox AI Model Lab｜AI生成3DモデルをRoblox Studioで使う検証ログ</title>
-<meta name="description" content="Meshy・TripoなどのAI生成3DモデルをRoblox Studioで実際に使えるか検証するログサイト。インポート・サイズ調整・向きズレ修正・当たり判定・ギミック化で初心者がつまずく箇所と解決手順を、実機検証で記録しています。">
-<meta name="keywords" content="Roblox Studio,AI生成3Dモデル,Meshy,Tripo,インポート,サイズ調整,当たり判定,ギミック,初心者">
+
+<title>Roblox Studio はじめてラボ｜初心者向けのやさしいゲーム制作ガイド</title>
+<meta name="description" content="Roblox Studioをはじめて触る人向けに、使い方・始め方・画面の見方・保存・公開・Script・簡単なゲーム作りを実機画面つきで解説する初心者向けガイドです。子ども本人・親子・大人の初心者にも読みやすく整理しています。">
+<meta name="keywords" content="Roblox Studio,ロブロックススタジオ,使い方,始め方,初心者,入門,iPad,スマホ,PCスペック,保存,公開,Script,ゲーム作り">
 <link rel="canonical" href="https://roblox-ai-model-lab.pages.dev/">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -27,13 +27,13 @@
 <!-- OGP -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:site_name" content="Roblox AI Model Lab">
-<meta property="og:title" content="Roblox AI Model Lab｜AI生成3DモデルをRoblox Studioで使う検証ログ">
-<meta property="og:description" content="Meshy・TripoのAI生成3DモデルをRoblox Studioで実際に使えるか検証。インポート・サイズ・向き・当たり判定・ギミック化のつまずきと解決手順を実機検証で記録。">
+<meta property="og:site_name" content="Roblox Studio はじめてラボ">
+<meta property="og:title" content="Roblox Studio はじめてラボ｜初心者向けのやさしいゲーム制作ガイド">
+<meta property="og:description" content="Roblox Studioの始め方、画面の見方、保存・公開、Script、簡単なゲーム作りを初心者向けに実機画面つきで解説します。">
 <meta property="og:url" content="https://roblox-ai-model-lab.pages.dev/">
 <meta property="og:image" content="https://roblox-ai-model-lab.pages.dev/ogp.png">
-<meta name="twitter:title" content="Roblox AI Model Lab | AI生成3DモデルをRoblox Studioで使う検証ログ">
-<meta name="twitter:description" content="Meshy・TripoのAI生成3DモデルをRoblox Studioで実際に使えるか検証。インポート・サイズ・向き・当たり判定・ギミック化のつまずきと解決手順を記録。">
+<meta name="twitter:title" content="Roblox Studio はじめてラボ｜初心者向けのやさしいゲーム制作ガイド">
+<meta name="twitter:description" content="Roblox Studioの始め方、画面の見方、保存・公開、Script、簡単なゲーム作りを初心者向けに実機画面つきで解説します。">
 <meta name="twitter:image" content="https://roblox-ai-model-lab.pages.dev/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -42,47 +42,142 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 
+<style>
+  .notice-line {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border: 1px solid rgba(37, 99, 235, .22);
+    border-radius: 14px;
+    background: rgba(239, 246, 255, .72);
+    color: var(--ink-2, #334155);
+    font-size: .95rem;
+  }
+
+  .article-link-list {
+    display: grid;
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .article-link {
+    display: block;
+    padding: 18px;
+    border: 1px solid var(--line, #e5e7eb);
+    border-radius: 18px;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+  }
+
+  .article-link:hover {
+    transform: translateY(-2px);
+    border-color: rgba(37, 99, 235, .35);
+    box-shadow: 0 14px 28px rgba(15, 23, 42, .08);
+  }
+
+  .article-link .kicker {
+    display: inline-flex;
+    margin-bottom: 8px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(219, 234, 254, .9);
+    color: #1d4ed8;
+    font-size: .82rem;
+    font-weight: 700;
+  }
+
+  .article-link h3 {
+    margin: 0 0 8px;
+  }
+
+  .article-link p {
+    margin: 0;
+    color: var(--ink-2, #475569);
+  }
+
+  .simple-list {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .simple-item {
+    padding: 16px;
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid var(--line, #e5e7eb);
+  }
+
+  .simple-item strong {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .status.scheduled {
+    background: rgba(148, 163, 184, .16);
+    color: #475569;
+  }
+
+  .status.live {
+    background: rgba(34, 197, 94, .16);
+    color: #166534;
+  }
+
+  .small-note {
+    color: var(--ink-2, #475569);
+    font-size: .94rem;
+  }
+</style>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Roblox AI Model Lab",
+  "name": "Roblox Studio はじめてラボ",
   "url": "https://roblox-ai-model-lab.pages.dev/",
-  "description": "Meshy・TripoのAI生成3DモデルをRoblox Studioで実際に使えるか検証する個人運営のログサイト。",
+  "description": "Roblox Studioをはじめて触る人向けに、使い方・始め方・画面の見方・保存・公開・Script・簡単なゲーム作りを実機画面つきで解説する初心者向けガイドです。",
   "inLanguage": "ja",
   "publisher": {
     "@type": "Person",
-    "name": "Roblox AI Model Lab 運営"
+    "name": "Roblox Studio はじめてラボ 運営"
+  },
+  "potentialAction": {
+    "@type": "ReadAction",
+    "target": "https://roblox-ai-model-lab.pages.dev/articles/what-is-roblox-studio.html"
   }
 }
 </script>
 </head>
+
 <body>
 
 <!-- ===================== Header ===================== -->
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Roblox AI Model Lab ホーム">
-      <span class="logo-mark">AI</span>
+    <a class="brand" href="#top" aria-label="Roblox Studio はじめてラボ ホーム">
+      <span class="logo-mark">ST</span>
       <span>
-        <span class="brand-name">Roblox AI Model Lab</span>
-        <span class="brand-sub">verification log</span>
+        <span class="brand-name">Roblox Studio はじめてラボ</span>
+        <span class="brand-sub">beginner guide</span>
       </span>
     </a>
 
     <nav class="nav" id="nav">
       <a href="#about">このサイトについて</a>
-      <a href="#categories">検証カテゴリ</a>
-      <a href="#logs">検証ログ</a>
-      <a href="#roadmap">今後の予定</a>
-      <a href="#policy">運営ポリシー</a>
-      <a class="btn btn-primary" href="https://note.com/yu_papa_ai" target="_blank" rel="noopener">noteで読む</a>
+      <a href="#start">最初に読む記事</a>
+      <a href="#categories">カテゴリ</a>
+      <a href="#articles">記事一覧</a>
+      <a href="#policy">運営方針</a>
+      <a class="btn btn-primary" href="/articles/what-is-roblox-studio.html">まず読む</a>
     </nav>
 
-    <a class="btn btn-primary header-cta" href="https://note.com/yu_papa_ai" target="_blank" rel="noopener">noteで読む</a>
+    <a class="btn btn-primary header-cta" href="/articles/what-is-roblox-studio.html">まず読む</a>
 
     <button class="nav-toggle" id="navToggle" aria-label="メニューを開閉" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
     </button>
   </div>
 </header>
@@ -93,285 +188,468 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-text">
-      <span class="eyebrow">AI × Roblox Studio 検証ログ</span>
-      <h1>AI生成3Dモデルは、<br>Roblox Studioで<span class="hl">本当に使える</span>のか。</h1>
+      <span class="eyebrow">Roblox Studio 初心者向けガイド</span>
+      <h1>Roblox Studioをはじめて触る人のための、<br><span class="hl">やさしいゲーム制作ガイド</span></h1>
       <p class="hero-lead">
-        Meshy・Tripo で作った3DモデルをRoblox Studioに取り込み、
-        サイズ・向き・当たり判定・ギミック化で「実際につまずいた箇所」と「直し方」を
-        ひとつずつ記録していく、個人運営の検証ログサイトです。
+        Roblox Studioの始め方、画面の見方、保存・公開、Script、コインやドアの作り方まで。
+        初心者がつまずきやすいポイントを、実際の画面と失敗例を交えてわかりやすく整理します。
       </p>
+
       <div class="hero-cta">
-        <a class="btn btn-primary" href="#logs">最新の検証ログを見る</a>
-        <a class="btn btn-ghost" href="#about">このサイトについて</a>
+        <a class="btn btn-primary" href="/articles/what-is-roblox-studio.html">Roblox Studioとは？から読む</a>
+        <a class="btn btn-ghost" href="#articles">記事一覧を見る</a>
       </div>
+
       <div class="hero-meta">
-        <span class="chip">個人運営</span>
-        <span class="chip">実機で検証</span>
         <span class="chip">初心者向け</span>
-        <span class="chip">失敗もそのまま記録</span>
+        <span class="chip">実機画面つき</span>
+        <span class="chip">親子でも読みやすい</span>
+        <span class="chip">非公式ガイド</span>
       </div>
+
+      <p class="notice-line">
+        このサイトはRoblox公式サイトではありません。Roblox Studioを実際に触りながら、初心者向けに整理している個人運営の非公式ガイドです。
+      </p>
     </div>
 
     <div class="hero-visual ph">
-      <span class="badge">Roblox Studio</span>
-      <span class="ph-tag">[ スクリーンショット差し替え予定 ]</span>
+      <span class="badge">Start here</span>
+      <span class="ph-tag">Roblox Studio<br>はじめてラボ</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== First article ===================== -->
+<section class="section" id="start">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Start here</span>
+      <h2>まずはこの記事から読むのがおすすめです</h2>
+      <p>
+        Roblox Studioが何なのか、Robloxアプリと何が違うのか、初心者は最初に何をすればよいのかを1本にまとめました。
+      </p>
+    </div>
+
+    <div class="log-list">
+      <article class="log-card">
+        <div class="log-thumb ph">
+          <span class="ph-tag">Roblox Studio<br>入門記事</span>
+        </div>
+        <div class="log-body">
+          <div class="log-meta">
+            <span class="tag tag-cat">はじめ方</span>
+            <span class="status live">公開済み</span>
+          </div>
+          <h3>
+            <a href="/articles/what-is-roblox-studio.html">
+              Roblox Studioとは？使い方・始め方・できることを初心者向けに解説
+            </a>
+          </h3>
+          <p class="excerpt">
+            Roblox Studioとは何か、Robloxアプリとの違い、iPadやスマホで使えるのか、最初に覚える画面、保存と公開の違いまで、実際の画面つきで解説します。
+          </p>
+          <div class="log-foot">
+            <span>初心者 / 親子 / 大人の入門</span>
+            <a class="more" href="/articles/what-is-roblox-studio.html">記事を読む</a>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- ===================== About ===================== -->
-<section class="section" id="about">
+<section class="section soft" id="about">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">About this site</span>
-      <h2>「AIツールの紹介」ではなく、<br>Roblox Studioで“詰まった→直した”を記録します。</h2>
+      <h2>Roblox Studioで「作る側」に回りたい人のためのサイトです</h2>
       <p>
-        AIで3Dモデルを作るところまでは、いまは誰でもできます。
-        本当に大変なのはそのあと——Roblox Studioに入れてから動かすまで。
-        このサイトは、その手前で止まってしまう初心者のための検証メモです。
+        Robloxで遊ぶだけでなく、自分でゲームやワールドを作ってみたい人向けに、最初の一歩から順番に整理していきます。
+        親向けに寄せすぎず、子ども本人・親子・大人の初心者にも読める内容を目指します。
       </p>
     </div>
 
     <div class="about-grid">
       <div class="about-card">
-        <span class="num">01 / 対象</span>
-        <h3>Roblox Studioを始めたばかりの大人</h3>
-        <p>専門用語をできるだけ避け、どこをクリックして何が起きたかまで含めて書きます。プログラミング未経験でも追える粒度を目指します。</p>
+        <span class="num">01 / 初心者向け</span>
+        <h3>何から始めるかを一本道にする</h3>
+        <p>
+          「Studioとは？」「iPadで使える？」「保存と公開は何が違う？」など、最初につまずきやすい疑問から順番に解説します。
+        </p>
       </div>
-      <div class="about-card">
-        <span class="num">02 / 主役</span>
-        <h3>つまずきポイントと解決手順</h3>
-        <p>「巨大になる」「90度倒れる」「すり抜ける」「動かない」——初心者が必ず一度はぶつかる壁を、再現条件つきで分解します。</p>
-      </div>
-      <div class="about-card">
-        <span class="num">03 / 方法</span>
-        <h3>実機検証 + 結果の正直な記録</h3>
-        <p>うまくいった手順だけでなく、ダメだった方法も残します。検証日・バージョン・使ったツールを明記し、追試できる形にします。</p>
-      </div>
-    </div>
 
-    <div class="callout">
-      <span class="ic">i</span>
-      <p>
-        扱うのは <strong>Meshy・Tripo などで生成した3Dモデルを Roblox Studio で使うこと</strong> に絞っています。
-        各AIツールの使い方そのものより、<strong>「Studioに入れてからの挙動」</strong>を中心に検証します。
-      </p>
+      <div class="about-card">
+        <span class="num">02 / 実機検証</span>
+        <h3>実際の画面と失敗例を重視</h3>
+        <p>
+          公式情報の要約だけでなく、実際にRoblox Studioを触って詰まった場所、画面の見え方、初心者が迷いやすい操作を記録します。
+        </p>
+      </div>
+
+      <div class="about-card">
+        <span class="num">03 / 親子でも安心</span>
+        <h3>課金・公開範囲・安全設定も扱う</h3>
+        <p>
+          子どもが使う場合に親が気になる、アカウント設定、課金、チャット、公開範囲、共同制作なども必要に応じて補足します。
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ===================== Categories ===================== -->
-<section class="section soft" id="categories">
+<section class="section" id="categories">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Verification categories</span>
-      <h2>検証カテゴリ一覧</h2>
-      <p>AI生成3DモデルをRoblox Studioで使うまでの流れを、つまずきやすい5つの工程に分けて検証しています。</p>
+      <span class="eyebrow">Categories</span>
+      <h2>カテゴリ別に学ぶ</h2>
+      <p>
+        最初は「はじめ方」と「基本操作」を優先し、慣れてきたらScriptやゲーム制作レシピへ進める構成にします。
+      </p>
     </div>
 
     <div class="cat-grid">
-      <a class="cat-card" href="#logs">
+      <a class="cat-card" href="#articles">
         <span class="cat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m8 11 4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5V5a2 2 0 0 1 2-2h10l4 4v12.5"/>
+            <path d="M14 3v5h5"/>
+            <path d="M8 13h8M8 17h6"/>
+          </svg>
         </span>
-        <span class="cat-step">STEP 01</span>
-        <h3>AI生成3Dモデルのインポート</h3>
-        <p>.obj / .fbx / .glb をStudioに取り込む手順。MeshPartへの変換、テクスチャやマテリアルが反映されない問題の確認。</p>
-        <span class="cat-tags"><span class="t">Import</span><span class="t">MeshPart</span><span class="t">.fbx</span></span>
+        <span class="cat-step">CATEGORY 01</span>
+        <h3>はじめ方</h3>
+        <p>Roblox Studioとは何か、Robloxアプリとの違い、最初に何をすればいいかを初心者向けに整理します。</p>
+        <span class="cat-tags"><span class="t">使い方</span><span class="t">入門</span><span class="t">初心者</span></span>
       </a>
 
-      <a class="cat-card" href="#logs">
+      <a class="cat-card" href="#articles">
         <span class="cat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V5a2 2 0 0 1 2-2h3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="14" rx="2"/>
+            <path d="M8 21h8M12 18v3"/>
+          </svg>
         </span>
-        <span class="cat-step">STEP 02</span>
-        <h3>サイズ調整</h3>
-        <p>取り込むと巨大／極小になる問題。実寸スケールの合わせ方、キャラと並べたときの基準サイズの決め方。</p>
-        <span class="cat-tags"><span class="t">Scale</span><span class="t">Stud</span><span class="t">実寸</span></span>
+        <span class="cat-step">CATEGORY 02</span>
+        <h3>PC・環境準備</h3>
+        <p>iPadやスマホで使えるのか、どのくらいのPCスペックが必要か、インストール前に知りたい点を整理します。</p>
+        <span class="cat-tags"><span class="t">iPad</span><span class="t">PC</span><span class="t">Mac</span></span>
       </a>
 
-      <a class="cat-card" href="#logs">
+      <a class="cat-card" href="#articles">
         <span class="cat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m4.9 4.9 2.8 2.8"/><path d="M2 12h4"/><circle cx="12" cy="13" r="6"/><path d="m15 10-3 3"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 5h16v14H4z"/>
+            <path d="M4 9h16M9 9v10"/>
+          </svg>
         </span>
-        <span class="cat-step">STEP 03</span>
-        <h3>向きズレ修正</h3>
-        <p>取り込むと90度倒れる・軸が違う問題。Orientationの直し方、書き出し側（Meshy / Tripo）での向きの揃え方。</p>
-        <span class="cat-tags"><span class="t">Orientation</span><span class="t">軸</span><span class="t">Pivot</span></span>
+        <span class="cat-step">CATEGORY 03</span>
+        <h3>基本操作</h3>
+        <p>Explorer、Properties、Output、Toolboxなど、最初に覚えたい画面の役割を実機画面つきで解説します。</p>
+        <span class="cat-tags"><span class="t">画面</span><span class="t">Explorer</span><span class="t">Properties</span></span>
       </a>
 
-      <a class="cat-card" href="#logs">
+      <a class="cat-card" href="#articles">
         <span class="cat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 3.5 7.5 9 9 5.5-1.5 9-4 9-9V7Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"/>
+          </svg>
         </span>
-        <span class="cat-step">STEP 04</span>
-        <h3>当たり判定（コリジョン）</h3>
-        <p>すり抜ける・引っかかる問題。CanCollide と CollisionFidelity の違い、複雑な形状での判定の最適化。</p>
-        <span class="cat-tags"><span class="t">CanCollide</span><span class="t">Collision</span></span>
+        <span class="cat-step">CATEGORY 04</span>
+        <h3>つまずき解決</h3>
+        <p>保存できない、公開できない、起動しない、画面が出ないなど、初心者が困りやすい問題を分解します。</p>
+        <span class="cat-tags"><span class="t">保存</span><span class="t">公開</span><span class="t">トラブル</span></span>
       </a>
 
-      <a class="cat-card" href="#logs">
+      <a class="cat-card" href="#articles">
         <span class="cat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m16 18 6-6-6-6"/>
+            <path d="m8 6-6 6 6 6"/>
+          </svg>
         </span>
-        <span class="cat-step">STEP 05</span>
-        <h3>ギミック化</h3>
-        <p>置いただけのモデルを動かす。ProximityPrompt・Tween・簡単なスクリプトで、ドア／スイッチ／拾えるアイテムにする。</p>
-        <span class="cat-tags"><span class="t">Script</span><span class="t">Tween</span><span class="t">Prompt</span></span>
+        <span class="cat-step">CATEGORY 05</span>
+        <h3>Script入門</h3>
+        <p>Scriptをどこに置くのか、Outputの見方、コインやドアを動かすための基本を初心者向けに扱います。</p>
+        <span class="cat-tags"><span class="t">Script</span><span class="t">Output</span><span class="t">Lua</span></span>
       </a>
 
-      <div class="cat-card" style="border-style:dashed;background:transparent;justify-content:center;align-items:flex-start;">
-        <span class="cat-step">COMING SOON</span>
-        <h3 style="color:var(--ink-2)">カテゴリは順次追加</h3>
-        <p>Meshy / Tripo / 実機検証ログ / 初心者ガイド など、検証が増えるごとにカテゴリを広げていきます。</p>
-      </div>
+      <a class="cat-card" href="#ai-models">
+        <span class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 3 7l9 5 9-5-9-5Z"/>
+            <path d="M3 12l9 5 9-5"/>
+            <path d="M3 17l9 5 9-5"/>
+          </svg>
+        </span>
+        <span class="cat-step">CATEGORY 06</span>
+        <h3>AI 3Dモデル検証</h3>
+        <p>MeshyやTripoなどで作った3DモデルをRoblox Studioに入れる検証は、差別化カテゴリとして残します。</p>
+        <span class="cat-tags"><span class="t">AI</span><span class="t">3D</span><span class="t">Mesh</span></span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ===================== Logs ===================== -->
-
-<section class="section" id="logs">
+<!-- ===================== Articles ===================== -->
+<section class="section soft" id="articles">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Latest logs</span>
-      <h2>最新の検証ログ</h2>
+      <span class="eyebrow">Articles</span>
+      <h2>記事一覧</h2>
       <p>
-        Roblox StudioでAI生成3Dモデルを実際に扱った検証テーマを整理しています。
-        自サイト内の記事ページは順次追加予定です。詳細な検証メモは先行してnoteにまとめています。
+        公開済みの記事と、これから追加する予定の記事です。まずは初心者の入口になる記事から整備していきます。
       </p>
     </div>
 
-<div class="log-list">
+    <div class="log-list">
+      <article class="log-card">
+        <div class="log-thumb ph">
+          <span class="ph-tag">公開済み</span>
+        </div>
+        <div class="log-body">
+          <div class="log-meta">
+            <span class="tag tag-cat">はじめ方</span>
+            <span class="status live">公開済み</span>
+          </div>
+          <h3>
+            <a href="/articles/what-is-roblox-studio.html">
+              Roblox Studioとは？使い方・始め方・できることを初心者向けに解説
+            </a>
+          </h3>
+          <p class="excerpt">
+            Roblox Studioの全体像、Robloxアプリとの違い、iPadやスマホ可否、PCの必要性、最初に覚える画面、保存と公開の違いを解説します。
+          </p>
+          <div class="log-foot">
+            <span>入門 / 初心者 / 親子</span>
+            <a class="more" href="/articles/what-is-roblox-studio.html">記事を読む</a>
+          </div>
+        </div>
+      </article>
 
-<article class="log-card">
-  <div class="log-thumb ph"><span class="ph-tag">[ Studio スクリーンショット追加予定 ]</span></div>
-  <div class="log-body">
-    <div class="log-meta">
-      <span class="tag tag-cat">サイズ調整</span>
-      <span class="status solved">検証済み</span>
+      <article class="log-card">
+        <div class="log-thumb ph">
+          <span class="ph-tag">準備中</span>
+        </div>
+        <div class="log-body">
+          <div class="log-meta">
+            <span class="tag tag-cat">PC・環境準備</span>
+            <span class="status scheduled">準備中</span>
+          </div>
+          <h3>Roblox StudioはiPadやスマホで使える？PCとの違いを初心者向けに解説</h3>
+          <p class="excerpt">
+            RobloxアプリとRoblox Studioを混同しやすい人向けに、iPad・スマホ・PCでできることの違いを整理します。
+          </p>
+          <div class="log-foot">
+            <span>iPad / スマホ / PC</span>
+            <span class="more">記事準備中</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="log-card">
+        <div class="log-thumb ph">
+          <span class="ph-tag">準備中</span>
+        </div>
+        <div class="log-body">
+          <div class="log-meta">
+            <span class="tag tag-cat">PC・環境準備</span>
+            <span class="status scheduled">準備中</span>
+          </div>
+          <h3>Roblox Studioに必要なPCスペックは？初心者向けに最低ラインを解説</h3>
+          <p class="excerpt">
+            高額なゲーミングPCが必要なのか、Macでも使えるのか、RAMやストレージはどの程度必要かを初心者向けに整理します。
+          </p>
+          <div class="log-foot">
+            <span>PCスペック / Mac / RAM</span>
+            <span class="more">記事準備中</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="log-card">
+        <div class="log-thumb ph">
+          <span class="ph-tag">準備中</span>
+        </div>
+        <div class="log-body">
+          <div class="log-meta">
+            <span class="tag tag-cat">基本操作</span>
+            <span class="status scheduled">準備中</span>
+          </div>
+          <h3>Roblox Studioの画面の見方｜Explorer・Properties・Outputを初心者向けに解説</h3>
+          <p class="excerpt">
+            Explorer、Properties、Output、Toolboxなど、最初に見ておきたい画面をスクショ付きで整理します。
+          </p>
+          <div class="log-foot">
+            <span>Explorer / Properties / Output</span>
+            <span class="more">記事準備中</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="log-card">
+        <div class="log-thumb ph">
+          <span class="ph-tag">準備中</span>
+        </div>
+        <div class="log-body">
+          <div class="log-meta">
+            <span class="tag tag-cat">つまずき解決</span>
+            <span class="status scheduled">準備中</span>
+          </div>
+          <h3>Roblox Studioで保存できない時の確認ポイント｜SaveとPublishの違い</h3>
+          <p class="excerpt">
+            Save to File、Save to Roblox、Publish to Robloxの違いを、初心者が混乱しないように整理します。
+          </p>
+          <div class="log-foot">
+            <span>保存 / 公開 / Save</span>
+            <span class="more">記事準備中</span>
+          </div>
+        </div>
+      </article>
     </div>
-    <h3>
-      <a href="/articles/ai-chest-roblox-studio-size-fix.html">
-        AI生成した宝箱モデルをRoblox Studioで使うには？サイズ調整で詰まった検証ログ
-      </a>
-    </h3>
-    <p class="excerpt">
-      Meshyで作ったAI生成宝箱モデルをRoblox Studioに取り込み、サイズ調整・当たり判定・ギミック化で詰まった点を整理しました。
-    </p>
-    <div class="log-foot">
-      <span>Meshy / Roblox Studio</span>
-      <a class="more" href="/articles/ai-chest-roblox-studio-size-fix">記事を読む</a>
-    </div>
-  </div>
-</article>
-
-  <article class="log-card">
-    <div class="log-thumb ph"><span class="ph-tag">[ Studio スクリーンショット追加予定 ]</span></div>
-    <div class="log-body">
-      <div class="log-meta">
-        <span class="tag tag-cat">ギミック化</span>
-        <span class="status solved">検証済み</span>
-      </div>
-      <h3>AI宝箱をProximityPromptで開けるギミックにする</h3>
-      <p class="excerpt">
-        置いただけのAI生成モデルを、Roblox Studio上で「近づいて操作できる宝箱」に変える検証です。
-        Prompt・InteractPart・スクリプトの基本構成を記事化予定です。
-      </p>
-      <div class="log-foot">
-        <span>ProximityPrompt / Script</span>
-        <span class="more">記事準備中</span>
-      </div>
-    </div>
-  </article>
-
-  <article class="log-card">
-    <div class="log-thumb ph"><span class="ph-tag">[ Studio スクリーンショット追加予定 ]</span></div>
-    <div class="log-body">
-      <div class="log-meta">
-        <span class="tag tag-cat">ミニゲーム化</span>
-        <span class="status solved">検証済み</span>
-      </div>
-      <h3>AI宝箱を使ってコイン回収ミニゲームを作る</h3>
-      <p class="excerpt">
-        AI生成した宝箱をゴールにして、コイン回収・リスポーン・クリア表示を組み合わせた検証です。
-        Roblox Studio初心者向けに、段階ごとの追加手順として整理予定です。
-      </p>
-      <div class="log-foot">
-        <span>Coin / Respawn / Clear</span>
-        <span class="more">記事準備中</span>
-      </div>
-    </div>
-  </article>
-
-  <article class="log-card">
-    <div class="log-thumb ph"><span class="ph-tag">[ Studio スクリーンショット追加予定 ]</span></div>
-    <div class="log-body">
-      <div class="log-meta">
-        <span class="tag tag-cat">ゲーム拡張</span>
-        <span class="status testing">検証中</span>
-      </div>
-      <h3>町探索マップにAI宝箱と鍵モデルを配置する</h3>
-      <p class="excerpt">
-        足場ミニゲームから町探索型のマップへ広げ、AI生成モデルをゲーム内アイテムとして使えるか検証中です。
-        鍵・宝箱・家・街灯などの配置と使い方を今後まとめます。
-      </p>
-      <div class="log-foot">
-        <span>Town map / Key / Chest</span>
-        <span class="more">検証中</span>
-      </div>
-    </div>
-  </article>
-
-</div>
-
-<div class="section-foot">
-  <a class="btn btn-ghost" href="https://note.com/yu_papa_ai" target="_blank" rel="noopener">先行版の検証ログをnoteで読む →</a>
-</div>
-
   </div>
 </section>
 
-<!-- ===================== note CTA ===================== -->
-<section class="section">
-  <div class="wrap">
-    <div class="note-cta">
-      <div>
-        <span class="eyebrow">Read more on note</span>
-        <h2>長文の検証メモ・失敗の記録はnoteで。</h2>
-        <p>スクリーンショット付きの手順、試行錯誤の過程、ボツになった方法まで——トップに載せきれない詳細は note に書いています。更新通知もnoteで受け取れます。</p>
-      </div>
-      <a class="btn btn-note" href="https://note.com/yu_papa_ai" target="_blank" rel="noopener">noteを見る →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== Roadmap ===================== -->
-<section class="section soft" id="roadmap">
+<!-- ===================== Beginner roadmap ===================== -->
+<section class="section" id="roadmap">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Roadmap</span>
-      <h2>今後の検証予定</h2>
-      <p>これから検証して記事にしていく予定のテーマです。リクエストはnote経由でも受け付けています。</p>
+      <span class="eyebrow">Learning roadmap</span>
+      <h2>初心者はこの順番で進めるのがおすすめです</h2>
+      <p>
+        いきなりScriptや公開まで進める必要はありません。まずは小さく触って、保存できるところまで進めましょう。
+      </p>
     </div>
 
     <div class="roadmap">
       <div class="road-item">
-        <span class="rk">予定 / インポート</span>
-        <div><h4>.glb と .fbx、Studioで扱いやすいのはどっち？</h4><p>同一モデルを両形式で書き出し、テクスチャ・サイズ・破損のしやすさを比較します。</p></div>
+        <span class="rk">STEP 01</span>
+        <div>
+          <h4>Roblox Studioとは何かを知る</h4>
+          <p>Robloxアプリとの違い、PCが必要か、無料で使えるかを確認します。</p>
+        </div>
       </div>
+
       <div class="road-item">
-        <span class="rk">予定 / ギミック</span>
-        <div><h4>AIモデルを「開く宝箱」にする最小スクリプト</h4><p>ProximityPromptとTweenだけで、コピペで動く宝箱ギミックを作ります。</p></div>
+        <span class="rk">STEP 02</span>
+        <div>
+          <h4>Baseplateを開いて画面に慣れる</h4>
+          <p>まずは何もない土台を開き、画面の動かし方と基本UIを覚えます。</p>
+        </div>
       </div>
+
       <div class="road-item">
-        <span class="rk">予定 / 当たり判定</span>
-        <div><h4>軽い当たり判定の作り方（見た目はそのまま）</h4><p>表示用メッシュと判定用の単純な形を分け、処理を軽くする方法を検証します。</p></div>
+        <span class="rk">STEP 03</span>
+        <div>
+          <h4>Partを置いて動かす</h4>
+          <p>パーツを1つ置き、場所・大きさ・色を変えるところから始めます。</p>
+        </div>
       </div>
+
       <div class="road-item">
-        <span class="rk">予定 / 初心者ガイド</span>
-        <div><h4>はじめてのAIモデル配置ガイド（通し手順）</h4><p>生成→書き出し→インポート→設置までを、最短ルートで1本にまとめます。</p></div>
+        <span class="rk">STEP 04</span>
+        <div>
+          <h4>保存と公開の違いを覚える</h4>
+          <p>作ったものを消さないために、まず保存の仕組みを理解します。公開は後で大丈夫です。</p>
+        </div>
       </div>
+
+      <div class="road-item">
+        <span class="rk">STEP 05</span>
+        <div>
+          <h4>小さなゲーム制作に進む</h4>
+          <p>コイン、ドア、チェックポイントなど、1つずつ小さな仕組みを作っていきます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Parents ===================== -->
+<section class="section soft" id="parents">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">For parents</span>
+      <h2>子どもが使う場合に、親が確認したいこと</h2>
+      <p>
+        このサイトは親向け専門ではありませんが、子どもがRoblox Studioを使う場合に気になる点も補足します。
+      </p>
+    </div>
+
+    <div class="simple-list">
+      <div class="simple-item">
+        <strong>課金とRobux</strong>
+        <span>Roblox Studioを触ることと、Roblox内の課金要素は分けて考えます。子どもが使う場合は購入制限を確認します。</span>
+      </div>
+
+      <div class="simple-item">
+        <strong>公開範囲</strong>
+        <span>作ったゲームを公開する前に、ゲーム名・説明文・公開設定を親子で確認すると安心です。</span>
+      </div>
+
+      <div class="simple-item">
+        <strong>個人情報</strong>
+        <span>本名、学校名、住んでいる場所などをゲーム名や説明文に入れないようにします。</span>
+      </div>
+
+      <div class="simple-item">
+        <strong>共同制作</strong>
+        <span>Team Createなど共同制作に関わる機能は、誰と使うのかを確認してから進めます。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== AI Models ===================== -->
+<section class="section" id="ai-models">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">AI 3D model lab</span>
+      <h2>AI生成3Dモデル検証は、差別化カテゴリとして残します</h2>
+      <p>
+        旧サイトで進めていたMeshy・TripoなどのAI生成3Dモデル検証は、サイトの主軸からは外します。
+        ただし、Roblox Studio初心者が3Dモデルを扱うときの実機検証ログとして、下部カテゴリに残します。
+      </p>
+    </div>
+
+    <div class="log-list">
+      <article class="log-card">
+        <div class="log-thumb ph">
+          <span class="ph-tag">AI 3D<br>検証ログ</span>
+        </div>
+        <div class="log-body">
+          <div class="log-meta">
+            <span class="tag tag-cat">AI 3Dモデル</span>
+            <span class="status scheduled">カテゴリ継続</span>
+          </div>
+          <h3>AI生成3DモデルをRoblox Studioで使う検証ログ</h3>
+          <p class="excerpt">
+            MeshyやTripoで作った3DモデルをRoblox Studioに取り込み、サイズ調整・向きズレ・当たり判定・ギミック化で詰まった点を整理します。
+          </p>
+          <div class="log-foot">
+            <span>Meshy / Tripo / Roblox Studio</span>
+            <a class="more" href="https://note.com/yu_papa_ai" target="_blank" rel="noopener">noteの検証ログを見る</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== note CTA ===================== -->
+<section class="section soft">
+  <div class="wrap">
+    <div class="note-cta">
+      <div>
+        <span class="eyebrow">Read more on note</span>
+        <h2>実際に試した検証ログはnoteにも残しています</h2>
+        <p>
+          Cloudflare Pagesでは検索向けに整理した記事を、noteでは実際に試した過程や失敗ログを中心に残します。
+          長い検証メモや作業記録を読みたい場合はnoteも確認してください。
+        </p>
+      </div>
+      <a class="btn btn-note" href="https://note.com/yu_papa_ai" target="_blank" rel="noopener">noteを見る →</a>
     </div>
   </div>
 </section>
@@ -381,26 +659,43 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Editorial policy</span>
-      <h2>運営ポリシー</h2>
-      <p>「検証ログ」を名乗る以上、結果の信頼性を大切にしています。次の方針で運営しています。</p>
+      <h2>運営方針</h2>
+      <p>
+        初心者向けサイトとして、わかりやすさと安全性を重視します。誇張した収益化や、子どもへの強い課金誘導は避けます。
+      </p>
     </div>
 
     <div class="policy-grid">
       <div class="policy-item">
         <span class="pn">01</span>
-        <div><h4>実機で検証してから書く</h4><p>推測ではなく、実際にRoblox Studioで操作した結果だけを記録します。検証日と使用バージョンを明記します。</p></div>
+        <div>
+          <h4>初心者にわかる言葉で書く</h4>
+          <p>専門用語を使う場合は、できるだけ画面や具体例とセットで説明します。</p>
+        </div>
       </div>
+
       <div class="policy-item">
         <span class="pn">02</span>
-        <div><h4>失敗・ボツも残す</h4><p>うまくいった手順だけでなく、ダメだった方法も「なぜダメか」とあわせて残します。</p></div>
+        <div>
+          <h4>実機で確認してから書く</h4>
+          <p>Roblox Studioを実際に操作し、スクショや失敗例を交えながら記事化します。</p>
+        </div>
       </div>
+
       <div class="policy-item">
         <span class="pn">03</span>
-        <div><h4>初心者目線を最優先</h4><p>専門用語には補足を添え、どこを操作したかが分かる粒度で書きます。前提知識を求めすぎません。</p></div>
+        <div>
+          <h4>親子でも読みやすくする</h4>
+          <p>課金、公開範囲、個人情報、共同制作など、子どもが使う場合に気になる点も補足します。</p>
+        </div>
       </div>
+
       <div class="policy-item">
         <span class="pn">04</span>
-        <div><h4>商標・権利に配慮する</h4><p>本サイトはRoblox Corporationとは無関係の個人運営です。各ツールの利用規約に反する使い方は扱いません。</p></div>
+        <div>
+          <h4>非公式サイトであることを明記する</h4>
+          <p>本サイトはRoblox公式サイトではありません。名称は説明目的で使用し、ロゴ利用や公式誤認を避けます。</p>
+        </div>
       </div>
     </div>
   </div>
@@ -414,33 +709,37 @@
     <div class="footer-top">
       <div class="footer-brand">
         <a class="brand" href="#top">
-          <span class="logo-mark">AI</span>
-          <span class="brand-name">Roblox AI Model Lab</span>
+          <span class="logo-mark">ST</span>
+          <span class="brand-name">Roblox Studio はじめてラボ</span>
         </a>
-        <p>Meshy・TripoのAI生成3DモデルをRoblox Studioで使えるか検証する、個人運営のログサイト。初心者がつまずく箇所を、実機検証で記録しています。</p>
+        <p>
+          Roblox Studioをはじめて触る人向けに、始め方・画面の見方・保存・公開・Script・簡単なゲーム作りを実機画面つきで解説する個人運営の非公式ガイドです。
+        </p>
       </div>
 
       <div class="footer-col">
         <h5>Sections</h5>
         <ul>
           <li><a href="#about">このサイトについて</a></li>
-          <li><a href="#categories">検証カテゴリ</a></li>
-          <li><a href="#logs">検証ログ</a></li>
-          <li><a href="#roadmap">今後の予定</a></li>
-          <li><a href="#policy">運営ポリシー</a></li>
+          <li><a href="#start">最初に読む記事</a></li>
+          <li><a href="#categories">カテゴリ</a></li>
+          <li><a href="#articles">記事一覧</a></li>
+          <li><a href="#policy">運営方針</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h5>Topics</h5>
         <div class="footer-tags">
-          <a class="t" href="#logs">Meshy</a>
-          <a class="t" href="#logs">Tripo</a>
-          <a class="t" href="#logs">Roblox Studio</a>
-          <a class="t" href="#logs">AI生成3Dモデル</a>
-          <a class="t" href="#logs">実機検証ログ</a>
-          <a class="t" href="#logs">初心者ガイド</a>
+          <a class="t" href="#articles">Roblox Studio</a>
+          <a class="t" href="#articles">初心者</a>
+          <a class="t" href="#articles">使い方</a>
+          <a class="t" href="#articles">iPad</a>
+          <a class="t" href="#articles">保存</a>
+          <a class="t" href="#articles">Script</a>
+          <a class="t" href="#ai-models">AI 3Dモデル</a>
         </div>
+
         <h5 style="margin-top:22px">Links</h5>
         <ul>
           <li><a href="https://note.com/yu_papa_ai" target="_blank" rel="noopener">note ↗</a></li>
@@ -451,13 +750,13 @@
     <div class="footer-bottom">
       <p class="disclaimer">
         <strong>免責・商標について：</strong>
-        本サイト「Roblox AI Model Lab」は個人が運営する非公式の検証サイトであり、
+        本サイト「Roblox Studio はじめてラボ」は個人が運営する非公式の学習ガイドであり、
         Roblox Corporation とは一切関係がありません。
-        「Roblox」は Roblox Corporation の商標です。
-        Meshy・Tripo を含む各社サービス名・製品名は、各社の商標または登録商標です。
+        「Roblox」および「Roblox Studio」は Roblox Corporation の商標または関連する名称です。
+        本サイトでは説明目的で名称を使用しています。
         掲載内容は検証時点のもので、正確性・最新性を保証するものではありません。
       </p>
-      <p>© 2026 Roblox AI Model Lab</p>
+      <p>© 2026 Roblox Studio はじめてラボ</p>
     </div>
   </div>
 </footer>
@@ -468,10 +767,12 @@
     var toggle = document.getElementById('navToggle');
     var nav = document.getElementById('nav');
     if (!toggle || !nav) return;
+
     toggle.addEventListener('click', function () {
       var open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
+
     nav.addEventListener('click', function (e) {
       if (e.target.tagName === 'A') {
         nav.classList.remove('open');
