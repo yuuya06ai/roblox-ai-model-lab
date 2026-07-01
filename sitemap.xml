@@ -21,4 +21,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+    <url>
+    <loc>https://roblox-ai-model-lab.pages.dev/articles/roblox-studio-ipad-smartphone</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
